@@ -61,6 +61,7 @@ class _NewPostPageState extends State<NewPostPage>
   @override
   Widget build(BuildContext context) {
     return ListView(
+      padding: EdgeInsets.all(0),
       children: <Widget>[
         Material(
           color: Colors.redAccent,

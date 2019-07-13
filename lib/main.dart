@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
       TextStyle(color: Colors.redAccent, fontSize: 12);
   int selectedPage = 0;
 
-  List pages = [NewPostPage(), ListingsPage(), ProfilePage(), ProductDetailsPage(), OrderPage() ];
+  List pages = [NewPostPage(), ListingsPage(), OrderPage(), ProfilePage(), ProductDetailsPage() ];
 
   @override
   void initState() {
