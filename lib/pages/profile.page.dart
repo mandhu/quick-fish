@@ -31,7 +31,7 @@ class _ProfilePageState extends State<ProfilePage>
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
-              height: 350,
+              height: 330,
               child: Stack(children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(top: 100),
@@ -49,10 +49,20 @@ class _ProfilePageState extends State<ProfilePage>
                   child: FloatingActionButton(
                     backgroundColor: Colors.black,
                     onPressed: () {},
-                    child: Icon(Icons.camera_alt, size: 25, color: Colors.white),
+                    child:
+                        Icon(Icons.camera_alt, size: 25, color: Colors.white),
                   ),
                 )
               ]),
+            ),
+            Text(
+              'Blaze Monster',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+            ),
+            Text(
+              'Member since 2019',
+              style:
+                  TextStyle(fontWeight: FontWeight.w300, color: Colors.black38),
             ),
             Expanded(
               child: ListView(
@@ -62,8 +72,8 @@ class _ProfilePageState extends State<ProfilePage>
                     child: Container(
                       height: 50,
                       decoration: BoxDecoration(
-                          border:
-                          Border(bottom: BorderSide(color: Colors.black12))),
+                          border: Border(
+                              bottom: BorderSide(color: Colors.black12))),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 30, right: 20),
                         child: Row(
@@ -87,8 +97,8 @@ class _ProfilePageState extends State<ProfilePage>
                     child: Container(
                       height: 50,
                       decoration: BoxDecoration(
-                          border:
-                          Border(bottom: BorderSide(color: Colors.black12))),
+                          border: Border(
+                              bottom: BorderSide(color: Colors.black12))),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 30, right: 20),
                         child: Row(
@@ -126,8 +136,8 @@ class _ProfilePageState extends State<ProfilePage>
                     child: Container(
                       height: 50,
                       decoration: BoxDecoration(
-                          border:
-                          Border(bottom: BorderSide(color: Colors.black12))),
+                          border: Border(
+                              bottom: BorderSide(color: Colors.black12))),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 30, right: 20),
                         child: Row(
@@ -165,8 +175,8 @@ class _ProfilePageState extends State<ProfilePage>
                     child: Container(
                       height: 50,
                       decoration: BoxDecoration(
-                          border:
-                          Border(bottom: BorderSide(color: Colors.black12))),
+                          border: Border(
+                              bottom: BorderSide(color: Colors.black12))),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 30, right: 20),
                         child: Row(
@@ -187,10 +197,74 @@ class _ProfilePageState extends State<ProfilePage>
                   ),
                 ],
               ),
-            )
+            ),
+            InkWell(
+              onTap: () {},
+              child: Container(
+                height: 50,
+                decoration: BoxDecoration(
+                    border: Border(bottom: BorderSide(color: Colors.black12))),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 30, right: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        'Balance',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black54,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: Text(
+                              '\$300',
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.black38,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                          Icon(Icons.navigate_next),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            InkWell(
+              onTap: () {},
+              child: Container(
+                height: 50,
+                decoration: BoxDecoration(
+                    border: Border(bottom: BorderSide(color: Colors.black12))),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 30, right: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        'Logout',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.redAccent,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      Icon(
+                        Icons.navigate_next,
+                        color: Colors.redAccent,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
-        bottomNavigationBar: NavigationBar(2)
-    );
+        bottomNavigationBar: NavigationBar(2));
   }
 }

@@ -40,18 +40,21 @@ class _NewPostPageState extends State<NewPostPage>
       var request = new http.MultipartRequest("POST", postUri);
       print('123123123123123123......../.../././');
       request.fields['user'] = 'blah';
-      request.files.add(new http.MultipartFile.fromBytes('file', await image.readAsBytes(), contentType: new MediaType('image', 'jpeg')));
+      request.files.add(new http.MultipartFile.fromBytes(
+          'file', await image.readAsBytes(),
+          contentType: new MediaType('image', 'jpeg')));
 //
       var response = await request.send();
       print('99999999999999......../.../././');
       if (response.statusCode == 200) print("Uploaded! ${response.toString()}");
 
-      print("Uploaded! ${response.statusCode.toString()} ------>  ${response.toString()}");
+      print("Uploaded! ${response.statusCode.toString()} ------>  ${response
+          .toString()}");
 
       setState(() {
         _image = image;
       });
-    } catch (e){
+    } catch (e) {
       print('-----------------------------Failed');
       setState(() {
         _image = null;
@@ -62,7 +65,8 @@ class _NewPostPageState extends State<NewPostPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView(
+      bottomNavigationBar: NavigationBar(1),
+      body: ListView(
           children: <Widget>[
             Material(
               color: Colors.blueAccent,
@@ -100,39 +104,40 @@ class _NewPostPageState extends State<NewPostPage>
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.only(right: 20),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0xFFCDDFF2),
-                            blurRadius: 5.0,
-                          )
-                        ],
-                      ),
-                      child: TextFormField(
-                        style: TextStyle(fontSize: 18),
-                        decoration: InputDecoration(
-                          hintText: 'Product',
-                          hintStyle: TextStyle(color: Colors.black26),
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.all(10),
-                          focusedBorder: InputBorder.none,
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Container(
+                        margin: EdgeInsets.only(right: 20),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(4)),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xFFEEEEEE),
+                              blurRadius: 2.0,
+                            )
+                          ],
+                        ),
+                        child: TextFormField(
+                          style: TextStyle(fontSize: 18),
+                          decoration: InputDecoration(
+                            hintText: 'Product',
+                            hintStyle: TextStyle(color: Colors.black26),
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.all(10),
+                            focusedBorder: InputBorder.none,
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                ],
-              ),
+                    )
+                  ],
+                )
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: 20.0, vertical: 10),
               child: Row(
                 children: <Widget>[
                   Expanded(
@@ -160,6 +165,14 @@ class _NewPostPageState extends State<NewPostPage>
                       ),
                     ),
                   ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: 20.0, vertical: 10),
+              child: Row(
+                children: <Widget>[
                   Expanded(
                     child: Container(
                       margin: EdgeInsets.only(right: 20),
@@ -189,7 +202,8 @@ class _NewPostPageState extends State<NewPostPage>
               ),
             ),
             Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 20.0, vertical: 10),
                 child: Row(
                   children: <Widget>[
                     Checkbox(
@@ -205,7 +219,8 @@ class _NewPostPageState extends State<NewPostPage>
                 )),
             if (isChecked)
               Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0, vertical: 10),
                   child: Row(
                     children: <Widget>[
                       Expanded(
@@ -234,27 +249,26 @@ class _NewPostPageState extends State<NewPostPage>
                         ),
                       )
                     ],
-                  )),
+                  ))
+            ,
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(right: 40.0),
+                  padding: const EdgeInsets.all(12),
                   child: MaterialButton(
-                    color: Color(0xff3B85D2),
+                    color: Colors.redAccent,
                     textColor: Colors.white,
-                    padding: const EdgeInsets.all(12),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
+                        borderRadius: BorderRadius.circular(4)),
                     child: Text('Post'),
                     onPressed: () {},
                   ),
                 ),
               ],
             )
-          ],
-        ),
-        bottomNavigationBar: NavigationBar(1)
+          ]
+      ),
     );
   }
 

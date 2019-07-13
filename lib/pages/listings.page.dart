@@ -48,7 +48,8 @@ class _ListingsPageState extends State<ListingsPage>
               margin: EdgeInsets.all(20),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
               child: Text('Promoted'),
             ),
             Container(
@@ -76,20 +77,55 @@ class _ListingsPageState extends State<ListingsPage>
                     key: _refreshIndicatorKey,
                     onRefresh: _refresh,
                     child: ListView(padding: EdgeInsets.all(0), children: [
-                      ListItemCard(name: 'Rae mas', seller: 'Hilman', tag: 'hero',),
-                      ListItemCard(name: 'Bodu boava', seller: 'Hilman', tag: 'jalsddf-ka',),
-                      ListItemCard(name: 'Faru tholhi', seller: 'Hilman', tag: 'jaldfsd80ka',),
-                      ListItemCard(name: 'Rae mas', seller: 'Hilman', tag: 'jalsdk6ad8f',),
-                      ListItemCard(name: 'Bodu boava', seller: 'Hilman', tag: 'jaldfs2dka',),
-                      ListItemCard(name: 'Faru tholhi', seller: 'Hilman', tag: 'jaldf52sdka',),
-                      ListItemCard(name: 'Rae mas', seller: 'Hilman', tag: 'jaldfsdk4a',),
-                      ListItemCard(name: 'Bodu boava', seller: 'Hilman', tag: 'jadflsssdfdka',),
-                      ListItemCard(name: 'Faru tholhi', seller: 'Hilman', tag: 'jaldfsdfgfgfgka',)
+                      ListItemCard(
+                        name: 'Rae mas',
+                        seller: 'Hilman',
+                        tag: 'hero',
+                      ),
+                      ListItemCard(
+                        name: 'Bodu boava',
+                        seller: 'Hilman',
+                        tag: 'jalsddf-ka',
+                      ),
+                      ListItemCard(
+                        name: 'Faru tholhi',
+                        seller: 'Hilman',
+                        tag: 'jaldfsd80ka',
+                      ),
+                      ListItemCard(
+                        name: 'Rae mas',
+                        seller: 'Hilman',
+                        tag: 'jalsdk6ad8f',
+                      ),
+                      ListItemCard(
+                        name: 'Bodu boava',
+                        seller: 'Hilman',
+                        tag: 'jaldfs2dka',
+                      ),
+                      ListItemCard(
+                        name: 'Faru tholhi',
+                        seller: 'Hilman',
+                        tag: 'jaldf52sdka',
+                      ),
+                      ListItemCard(
+                        name: 'Rae mas',
+                        seller: 'Hilman',
+                        tag: 'jaldfsdk4a',
+                      ),
+                      ListItemCard(
+                        name: 'Bodu boava',
+                        seller: 'Hilman',
+                        tag: 'jadflsssdfdka',
+                      ),
+                      ListItemCard(
+                        name: 'Faru tholhi',
+                        seller: 'Hilman',
+                        tag: 'jaldfsdfgfgfgka',
+                      )
                     ])))
           ],
         ),
-        bottomNavigationBar: NavigationBar(0)
-    );
+        bottomNavigationBar: NavigationBar(0));
   }
 
   Future<Null> _refresh() {

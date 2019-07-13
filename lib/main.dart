@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quick_fish/pages/listings.page.dart';
 import 'package:quick_fish/pages/new-post.page.dart';
+import 'package:quick_fish/pages/orders.page.dart';
 import 'package:quick_fish/pages/profile.page.dart';
 
 import 'components/navigation-bar.component.dart';
@@ -33,11 +34,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int selectedPage = 0;
 
-  List pages = [
-    NewPostPage(),
-    ListingsPage(),
-    ProfilePage()
-  ];
+  List pages = [NewPostPage(), ListingsPage(), ProfilePage()];
 
   @override
   void initState() {
@@ -47,15 +44,14 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Expanded(
-              child: Container(
-                  width: double.infinity, child: pages[selectedPage])),
-        ],
-      ),
-      bottomNavigationBar: NavigationBar(0)
-    );
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Expanded(
+                child: Container(
+                    width: double.infinity, child: pages[selectedPage])),
+          ],
+        ),
+        bottomNavigationBar: NavigationBar(0));
   }
 }
