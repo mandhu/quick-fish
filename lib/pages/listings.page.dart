@@ -67,7 +67,7 @@ class _ListingsPageState extends State<ListingsPage>
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.only(left: 20.0, right: 20, bottom: 16, top: 20),
           child: Text(
             'Latest',
             style: TextStyle(fontSize: 20),),
