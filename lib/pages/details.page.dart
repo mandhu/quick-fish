@@ -92,6 +92,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
                 ),
               ),
               MaterialButton(
+                color: Color(0xff3B85D2),
+                textColor: Colors.white,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                 child: Text('asdfd'),
                 onPressed: () {},
               )

@@ -18,7 +18,7 @@ class FishCard extends StatelessWidget {
             boxShadow: [
               BoxShadow(
                 color: Color(0xFFCDDFF2),
-                blurRadius: 20.0,
+                blurRadius: 5.0,
               )
             ],
             borderRadius: new BorderRadius.all(Radius.circular(10.0))),
