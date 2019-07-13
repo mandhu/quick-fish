@@ -1,10 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:quick_fish/components/boosted-item.component.dart';
-import 'package:quick_fish/components/fish-card.component.dart';
-import 'package:quick_fish/components/listing-item.component.dart';
+import 'package:http_parser/http_parser.dart';
 import 'package:image_picker_modern/image_picker_modern.dart';
+import 'package:http/http.dart' as http;
 
 class NewPostPage extends StatefulWidget {
   @override
@@ -33,10 +32,26 @@ class _NewPostPageState extends State<NewPostPage>
     try {
       var image = await ImagePicker.pickImage(source: ImageSource.camera);
 
+      // Upload here
+      print('Uploadingggggg......../.../././');
+      var postUri = Uri.parse("http://10.10.21.154:8000/api/upload");
+      print('JSHDKJHAKJDHKJSAHDKSJA......../.../././');
+      var request = new http.MultipartRequest("POST", postUri);
+      print('123123123123123123......../.../././');
+      request.fields['user'] = 'blah';
+      request.files.add(new http.MultipartFile.fromBytes('file', await image.readAsBytes(), contentType: new MediaType('image', 'jpeg')));
+//
+      var response = await request.send();
+      print('99999999999999......../.../././');
+      if (response.statusCode == 200) print("Uploaded! ${response.toString()}");
+
+      print("Uploaded! ${response.statusCode.toString()} ------>  ${response.toString()}");
+
       setState(() {
         _image = image;
       });
     } catch (e){
+      print('-----------------------------Failed');
       setState(() {
         _image = null;
       });

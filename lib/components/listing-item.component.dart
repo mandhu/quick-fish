@@ -44,7 +44,7 @@ class ListItemCard extends StatelessWidget {
             ),
           ),
           Text(
-            '\$ 240.00',
+            '\$240.00',
             style: TextStyle(fontSize: 18, letterSpacing: -1.5, color: Colors.black45),
           )
         ],
