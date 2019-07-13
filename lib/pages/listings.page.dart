@@ -47,7 +47,9 @@ class _ListingsPageState extends State<ListingsPage>
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-          child: Text('Promoted'),
+          child: Text(
+            'Promoted',
+            style: TextStyle(fontSize: 20),),
         ),
         Container(
           height: 120,
@@ -66,7 +68,9 @@ class _ListingsPageState extends State<ListingsPage>
         ),
         Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Text('Latest'),
+          child: Text(
+            'Latest',
+            style: TextStyle(fontSize: 20),),
         ),
         Expanded(
             child: RefreshIndicator(

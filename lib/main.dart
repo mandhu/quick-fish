@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Icon(Icons.list,
+                  Icon(Icons.view_list,
                       color: selectedPage == 1
                           ? Colors.redAccent
                           : Colors.black45),

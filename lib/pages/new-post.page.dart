@@ -105,12 +105,12 @@ class _NewPostPageState extends State<NewPostPage>
                 child: Container(
                   margin: EdgeInsets.only(right: 20),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: BorderRadius.all(Radius.circular(4)),
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                        color: Color(0xFFCDDFF2),
-                        blurRadius: 5.0,
+                        color: Color(0xFFEEEEEE),
+                        blurRadius: 2.0,
                       )
                     ],
                   ),
@@ -137,12 +137,12 @@ class _NewPostPageState extends State<NewPostPage>
                 child: Container(
                   margin: EdgeInsets.only(right: 20),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: BorderRadius.all(Radius.circular(4)),
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                        color: Color(0xFFCDDFF2),
-                        blurRadius: 5.0,
+                        color: Color(0xFFEEEEEE),
+                        blurRadius: 2.0,
                       )
                     ],
                   ),
@@ -162,12 +162,12 @@ class _NewPostPageState extends State<NewPostPage>
                 child: Container(
                   margin: EdgeInsets.only(right: 20),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: BorderRadius.all(Radius.circular(4)),
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                        color: Color(0xFFCDDFF2),
-                        blurRadius: 5.0,
+                        color: Color(0xFFEEEEEE),
+                        blurRadius: 2.0,
                       )
                     ],
                   ),
@@ -187,7 +187,7 @@ class _NewPostPageState extends State<NewPostPage>
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal:6.0, vertical: 10),
           child: Row(
             children: <Widget>[
               Checkbox(
@@ -210,12 +210,12 @@ class _NewPostPageState extends State<NewPostPage>
                   child: Container(
                     margin: EdgeInsets.only(right: 20),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      borderRadius: BorderRadius.all(Radius.circular(4)),
                       color: Colors.white,
                       boxShadow: [
                         BoxShadow(
-                          color: Color(0xFFCDDFF2),
-                          blurRadius: 5.0,
+                          color: Color(0xFFEEEEEE),
+                          blurRadius: 2.0,
                         )
                       ],
                     ),
@@ -243,7 +243,7 @@ class _NewPostPageState extends State<NewPostPage>
                 textColor: Colors.white,
                 padding: const EdgeInsets.all(12),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
+                    borderRadius: BorderRadius.circular(4)),
                 child: Text('Post'),
                 onPressed: () {},
               ),
