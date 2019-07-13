@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quick_fish/pages/listings.page.dart';
 import 'package:quick_fish/pages/new-post.page.dart';
+import 'package:quick_fish/pages/orders.page.dart';
 import 'package:quick_fish/pages/profile.page.dart';
 
 import 'pages/details.page.dart';
@@ -36,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
       TextStyle(color: Colors.redAccent, fontSize: 12);
   int selectedPage = 0;
 
-  List pages = [NewPostPage(), ListingsPage(), ProfilePage(), ProductDetailsPage() ];
+  List pages = [NewPostPage(), ListingsPage(), ProfilePage(), ProductDetailsPage(), OrderPage() ];
 
   @override
   void initState() {
