@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:quick_fish/components/fish-card.component.dart';
 
-class ListingsPage extends StatefulWidget {
+class ProductDetailsPage extends StatefulWidget {
   @override
-  _ListingsPageState createState() => _ListingsPageState();
+  _ProductDetailsPageState createState() => _ProductDetailsPageState();
 }
 
-class _ListingsPageState extends State<ListingsPage>
+class _ProductDetailsPageState extends State<ProductDetailsPage>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
 
@@ -26,7 +26,7 @@ class _ListingsPageState extends State<ListingsPage>
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Expanded(child: FishCard(child: Text('Search'))),
+        Expanded(child: Text('Search')),
       ],
     );
   }
