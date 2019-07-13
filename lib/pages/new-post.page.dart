@@ -48,7 +48,7 @@ class _NewPostPageState extends State<NewPostPage>
     return ListView(
       children: <Widget>[
         Material(
-          color: Colors.blueAccent,
+          color: Colors.redAccent,
           child: Container(
             height: 250,
             child: _image == null
@@ -224,7 +224,7 @@ class _NewPostPageState extends State<NewPostPage>
             Padding(
               padding: const EdgeInsets.only(right: 40.0),
               child: MaterialButton(
-                color: Color(0xff3B85D2),
+                color: Colors.redAccent,
                 textColor: Colors.white,
                 padding: const EdgeInsets.all(12),
                 shape: RoundedRectangleBorder(
