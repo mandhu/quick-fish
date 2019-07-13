@@ -15,7 +15,7 @@ class ListItemCard extends StatelessWidget {
     final fifteenAgo = new DateTime.now().subtract(new Duration(minutes: 15));
 
     return FishCard(
-      margin: EdgeInsets.only(top: 10, left: 15, right: 15),
+      margin: EdgeInsets.only(bottom: 10, left: 15, right: 15),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[

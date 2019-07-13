@@ -35,8 +35,16 @@ class _ListingsPageState extends State<ListingsPage>
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        SizedBox(height: 20,),
-        FishCard(child: Text('Search...', style: TextStyle(fontSize: 20),), margin: EdgeInsets.all(20),),
+        SizedBox(
+          height: 20,
+        ),
+        FishCard(
+          child: Text(
+            'Search...',
+            style: TextStyle(fontSize: 20),
+          ),
+          margin: EdgeInsets.all(20),
+        ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
           child: Text('Promoted'),
@@ -62,9 +70,10 @@ class _ListingsPageState extends State<ListingsPage>
         ),
         Expanded(
             child: RefreshIndicator(
+                displacement: 0,
                 key: _refreshIndicatorKey,
                 onRefresh: _refresh,
-                child: ListView(children: [
+                child: ListView(padding: EdgeInsets.all(0), children: [
                   ListItemCard(name: 'Rae mas', seller: 'Hilman'),
                   ListItemCard(name: 'Bodu boava', seller: 'Hilman'),
                   ListItemCard(name: 'Faru tholhi', seller: 'Hilman'),
