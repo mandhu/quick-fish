@@ -15,7 +15,7 @@ class ListItemCard extends StatelessWidget {
     final fifteenAgo = new DateTime.now().subtract(new Duration(minutes: 15));
 
     return FishCard(
-      margin: EdgeInsets.only(top: 8),
+      margin: EdgeInsets.only(bottom: 0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -45,7 +45,7 @@ class ListItemCard extends StatelessWidget {
           ),
           Text(
             '\$ 240.00',
-            style: TextStyle(fontSize: 18, color: Colors.black45),
+            style: TextStyle(fontSize: 18, letterSpacing: -1.5, color: Colors.black45),
           )
         ],
       ),
