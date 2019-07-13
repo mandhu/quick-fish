@@ -44,11 +44,10 @@ class _ProfilePageState extends State<ProfilePage>
             ),
             Positioned(
               top: 100,
-              height: 330,
-              width: 330,
-              child: IconButton(
-                  icon: Icon(Icons.camera_alt, size: 60,),
-                  onPressed: () {},
+              child: FloatingActionButton(
+                backgroundColor: Colors.black,
+                onPressed: () {},
+                child: Icon(Icons.camera_alt, size: 25, color: Colors.white),
               ),
             )
           ]),

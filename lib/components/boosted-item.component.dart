@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'fish-card.component.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class BoostedItem extends StatelessWidget {
   final String name;
@@ -11,6 +12,8 @@ class BoostedItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fifteenAgo = new DateTime.now().subtract(new Duration(minutes: 15));
+
     return FishCard(
       margin: EdgeInsets.only(top: 10, bottom: 10, right: 5),
       child: Row(
@@ -33,6 +36,8 @@ class BoostedItem extends StatelessWidget {
             children: <Widget>[
               Text(name, style: TextStyle(fontSize: 20)),
               Text(seller),
+              SizedBox(height:12,),
+              Text(timeago.format(fifteenAgo), style: TextStyle(fontSize: 12, color: Colors.black26)),
             ],
           )
         ],

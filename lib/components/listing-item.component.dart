@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 import 'fish-card.component.dart';
 
@@ -11,6 +12,8 @@ class ListItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fifteenAgo = new DateTime.now().subtract(new Duration(minutes: 15));
+
     return FishCard(
       margin: EdgeInsets.only(top: 10, left: 15, right: 15),
       child: Row(
@@ -34,6 +37,8 @@ class ListItemCard extends StatelessWidget {
               children: <Widget>[
                 Text(name, style: TextStyle(fontSize: 20)),
                 Text(seller, style: TextStyle(color: Colors.indigoAccent[700])),
+                SizedBox(height: 20,),
+                Text(timeago.format(fifteenAgo), style: TextStyle(color: Colors.black26)),
               ],
             ),
           ),
