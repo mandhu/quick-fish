@@ -75,8 +75,20 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
             children: <Widget>[
               Expanded(
                 flex: 2,
-                child: TextField(
-                  decoration: InputDecoration(hintText: 'Quantity'),
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      color: Colors.white),
+                  child: TextFormField(
+                    style: TextStyle(fontSize: 18),
+                    decoration: InputDecoration(
+                      hintText: 'Quantity',
+                      hintStyle: TextStyle(color: Colors.black26),
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.all(15),
+                      focusedBorder: InputBorder.none,
+                    ),
+                  ),
                 ),
               ),
               MaterialButton(
