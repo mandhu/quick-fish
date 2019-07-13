@@ -28,59 +28,93 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(bottom: 20),
-          child: Container(
-            height: 230,
-            color: Color(0xff3B85D2),
-          ),
+        Container(
+          height: 230,
+          color: Color(0xff3B85D2),
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 15, right: 15),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        Expanded(
+          child: ListView(
+            padding: EdgeInsets.all(15),
             children: <Widget>[
-              Text(
-                'Red Snapper',
-                style: TextStyle(fontSize: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    'Red Snapper',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                    '5 mins ago',
+                    style: TextStyle(fontSize: 12, color: Color(0xff4B88DA)),
+                  ),
+                ],
               ),
               Text(
-                '5 mins ago',
+                'Fisherman X',
                 style: TextStyle(fontSize: 12, color: Color(0xff4B88DA)),
               ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 15),
-          child: Text(
-            'Fisherman X',
-            style: TextStyle(fontSize: 12, color: Color(0xff4B88DA)),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(right: 25, top: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              Text(
-                '\$ 100',
-                style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xff5FB405)),
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      '\$ 100',
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xff5FB405)),
+                    ),
+                  ],
+                ),
               ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
-          child: Row(
-            children: <Widget>[
-              Expanded(
-                flex: 2,
-                child: Container(
-                  margin: EdgeInsets.only(right: 20),
+              Padding(
+                padding: const EdgeInsets.only(top: 15),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 2,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xFFCDDFF2),
+                              blurRadius: 5.0,
+                            )
+                          ],
+                        ),
+                        child: TextFormField(
+                          style: TextStyle(fontSize: 18),
+                          decoration: InputDecoration(
+                            hintText: 'Quantity',
+                            hintStyle: TextStyle(color: Colors.black26),
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.all(10),
+                            focusedBorder: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Row(
+                children: <Widget>[
+                  Checkbox(
+                    value: isChecked,
+                    onChanged: (value) {
+                      setState(() {
+                        isChecked = value;
+                      });
+                    },
+                  ),
+                  Text('Delivery?')
+                ],
+              ),
+              if(isChecked) 
+              Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                     color: Colors.white,
@@ -91,51 +125,36 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
                       )
                     ],
                   ),
-                  child: TextFormField(
-                    style: TextStyle(fontSize: 18),
+                  child: TextField(
                     decoration: InputDecoration(
-                      hintText: 'Quantity',
-                      hintStyle: TextStyle(color: Colors.black26),
-                      border: InputBorder.none,
+                      hintText: 'Address',
                       contentPadding: EdgeInsets.all(10),
                       focusedBorder: InputBorder.none,
                     ),
-                  ),
-                ),
+                    maxLines: null,
+                    keyboardType: TextInputType.multiline,
+                  )
               ),
-              MaterialButton(
-                color: Color(0xff3B85D2),
-                textColor: Colors.white,
-                padding: const EdgeInsets.all(12),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                child: Text('BUY NOW'),
-                onPressed: () {},
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: MaterialButton(
+                      color: Color(0xff3B85D2),
+                      textColor: Colors.white,
+                      padding: const EdgeInsets.all(12),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Text('BUY NOW'),
+                      onPressed: () {},
+                    ),
+                  ),
+                ],
               )
             ],
           ),
         ),
-        Row(
-          children: <Widget>[
-            Checkbox(
-              value: isChecked,
-              onChanged: (value) {
-                setState(() {
-                  isChecked = value;
-                });
-              },
-            ),
-            Text('Delivery?')
-          ],
-        ),
-        
-        TextField(
-          decoration: InputDecoration(
-            labelText: 'Address'
-          ),
-          maxLines: null,
-          keyboardType: TextInputType.multiline,
-        )
       ],
     );
   }
