@@ -54,7 +54,12 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       bottomNavigationBar: Container(
         height: 57,
-        color: Colors.white,
+        decoration: new BoxDecoration(color: Colors.white, boxShadow: [
+          BoxShadow(
+            color: Color(0xFFCDDFF2),
+            blurRadius: 10.0,
+          )
+        ]),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
