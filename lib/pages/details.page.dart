@@ -25,8 +25,67 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Expanded(child: Text('Search')),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 20),
+          child: Container(
+            height: 230,
+            color: Color(0xff3B85D2),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 15, right: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                'Red Snapper',
+                style: TextStyle(fontSize: 20),
+              ),
+              Text(
+                '5 mins ago',
+                style: TextStyle(fontSize: 12, color: Color(0xff4B88DA)),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 15),
+          child: Text(
+            'Fisherman X',
+            style: TextStyle(fontSize: 12, color: Color(0xff4B88DA)),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              Text(
+                '\$ 100',
+                style: TextStyle(fontSize: 20, color: Color(0xff5FB405)),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(15),
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                flex: 2,
+                child: TextField(
+                  decoration: InputDecoration(hintText: 'Quantity'),
+                ),
+              ),
+              MaterialButton(
+                child: Text('asdfd'),
+                onPressed: () {},
+              )
+            ],
+          ),
+        ),
       ],
     );
   }
