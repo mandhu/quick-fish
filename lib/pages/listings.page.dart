@@ -3,6 +3,7 @@ import 'package:quick_fish/components/boosted-item.component.dart';
 import 'package:quick_fish/components/fish-card.component.dart';
 import 'package:quick_fish/components/listing-item.component.dart';
 import 'package:quick_fish/components/navigation-bar.component.dart';
+import 'package:http/http.dart' as http;
 
 class ListingsPage extends StatefulWidget {
   @override
@@ -18,6 +19,8 @@ class _ListingsPageState extends State<ListingsPage>
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
       new GlobalKey<RefreshIndicatorState>();
 
+  List<Post> posts;
+
   @override
   void initState() {
     _controller = AnimationController(vsync: this);
@@ -28,6 +31,11 @@ class _ListingsPageState extends State<ListingsPage>
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  loadItems() async {
+    var res = await http.get('http://10.10.21.185:8000/api/listings');
+
   }
 
   @override
@@ -133,4 +141,46 @@ class _ListingsPageState extends State<ListingsPage>
   }
 }
 
+
+class Post {
+  final tripNo;
+  final bookable;
+  final cancelled;
+  final capacity;
+  final price;
+  final from;
+  final to;
+  final departure;
+  final transit;
+  final boat;
+  final ticketCounts;
+
+  Post(
+      {this.tripNo,
+        this.bookable,
+        this.cancelled,
+        this.capacity,
+        this.price,
+        this.from,
+        this.to,
+        this.departure,
+        this.transit,
+        this.boat,
+        this.ticketCounts});
+
+  factory Post.fromJson(Map<String, dynamic> json) {
+    return Post(
+        tripNo: json['tripNo'],
+        bookable: json['bookable'],
+        cancelled: json['cancelled'],
+        capacity: json['capacity'],
+        price: json['price'],
+        from: json['from'],
+        to: json['to'],
+        departure: json['departure'],
+        transit: json['transit'],
+        boat: json['boat'],
+        ticketCounts: json['ticketCounts']);
+  }
+}
 
