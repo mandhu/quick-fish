@@ -29,7 +29,7 @@ class _ProfilePageState extends State<ProfilePage>
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Container(
-          height: 350,
+          height: 330,
           child: Stack(children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(top: 100),
@@ -52,6 +52,8 @@ class _ProfilePageState extends State<ProfilePage>
             )
           ]),
         ),
+        Text('Blaze Monster', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
+        Text('Member since 2019', style: TextStyle(fontWeight: FontWeight.w300, color: Colors.black38),),
         Expanded(
           child: ListView(
             children: <Widget>[
