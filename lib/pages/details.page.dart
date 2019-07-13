@@ -34,7 +34,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
         ),
         Expanded(
           child: ListView(
-            padding: EdgeInsets.all(15),
+            padding: EdgeInsets.only(top: 15, right: 30, bottom: 15, left: 15),
             children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -128,7 +128,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: 'Address',
-                      contentPadding: EdgeInsets.all(10),
+                      contentPadding: EdgeInsets.all(15),
                       focusedBorder: InputBorder.none,
                     ),
                     maxLines: null,
