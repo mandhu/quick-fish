@@ -30,7 +30,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final TextStyle labelStyle = TextStyle(color: Colors.black45, fontSize: 12);
-  final TextStyle activeLabelStyle = TextStyle(color: Colors.redAccent, fontSize: 12);
+  final TextStyle activeLabelStyle =
+      TextStyle(color: Colors.redAccent, fontSize: 12);
   int selectedPage = 0;
 
   List pages = [ListingsPage(), ProductDetailsPage()];
@@ -43,15 +44,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Expanded(
-                child: Container(
-                    width: double.infinity, child: pages[selectedPage])),
-          ],
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Expanded(
+              child: Container(
+                  width: double.infinity, child: pages[selectedPage])),
+        ],
       ),
       bottomNavigationBar: Container(
         height: 57,
@@ -71,7 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Icon(Icons.home),
-                  Text('Home', style: selectedPage == 0 ? activeLabelStyle : labelStyle)
+                  Text('Home',
+                      style: selectedPage == 0 ? activeLabelStyle : labelStyle)
                 ],
               ),
             ),
@@ -85,7 +85,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Icon(Icons.list),
-                  Text('Listing', style: selectedPage == 1 ? activeLabelStyle : labelStyle)
+                  Text('Listing',
+                      style: selectedPage == 1 ? activeLabelStyle : labelStyle)
                 ],
               ),
             ),
@@ -99,7 +100,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Icon(Icons.account_circle),
-                  Text('Profile', style: selectedPage == 2 ? activeLabelStyle : labelStyle)
+                  Text('Profile',
+                      style: selectedPage == 2 ? activeLabelStyle : labelStyle)
                 ],
               ),
             ),
