@@ -30,7 +30,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final TextStyle labelStyle = TextStyle(color: Colors.black45, fontSize: 12);
-  final TextStyle activeLabelStyle = TextStyle(color: Colors.redAccent, fontSize: 12);
+  final TextStyle activeLabelStyle =
+      TextStyle(color: Colors.redAccent, fontSize: 12);
   int selectedPage = 0;
 
   List pages = [ListingsPage(), ProductDetailsPage()];
@@ -55,7 +56,12 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       bottomNavigationBar: Container(
         height: 57,
-        color: Colors.white,
+        decoration: new BoxDecoration(color: Colors.white, boxShadow: [
+          BoxShadow(
+            color: Color(0xFFCDDFF2),
+            blurRadius: 10.0,
+          )
+        ]),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -71,7 +77,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Icon(Icons.home),
-                  Text('Home', style: selectedPage == 0 ? activeLabelStyle : labelStyle)
+                  Text('Home',
+                      style: selectedPage == 0 ? activeLabelStyle : labelStyle)
                 ],
               ),
             ),
@@ -85,7 +92,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Icon(Icons.list),
-                  Text('Listing', style: selectedPage == 1 ? activeLabelStyle : labelStyle)
+                  Text('Listing',
+                      style: selectedPage == 1 ? activeLabelStyle : labelStyle)
                 ],
               ),
             ),
@@ -99,7 +107,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Icon(Icons.account_circle),
-                  Text('Profile', style: selectedPage == 2 ? activeLabelStyle : labelStyle)
+                  Text('Profile',
+                      style: selectedPage == 2 ? activeLabelStyle : labelStyle)
                 ],
               ),
             ),
