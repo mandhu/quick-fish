@@ -125,7 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
             MaterialButton(
               onPressed: () {
                 setState(() {
-//                  selectedPage = 3;
+                 selectedPage = 3;
                 });
               },
               child: Column(
