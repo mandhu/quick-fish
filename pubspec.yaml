@@ -24,6 +24,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   provider: 3.0.0+1
+  image_picker_modern: ^0.4.12+2
 
 
 dev_dependencies:

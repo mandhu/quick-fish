@@ -12,15 +12,19 @@ class BoostedItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FishCard(
-      margin: EdgeInsets.only(top: 10,bottom: 10, right: 5),
+      margin: EdgeInsets.only(top: 10, bottom: 10, right: 5),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          SizedBox(
+          Container(
             width: 80,
             height: 80,
-            child: Placeholder(
-              color: Colors.blueAccent,
-            ),
+            child: ClipRRect(
+                borderRadius: new BorderRadius.circular(10.0),
+                child: Image.network(
+                  'http://placekitten.com/150/150',
+                  fit: BoxFit.cover,
+                )),
           ),
           SizedBox(width: 10),
           Column(

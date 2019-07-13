@@ -35,6 +35,7 @@ class _ListingsPageState extends State<ListingsPage>
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
+        SizedBox(height: 20,),
         FishCard(child: Text('Search...', style: TextStyle(fontSize: 20),), margin: EdgeInsets.all(20),),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),

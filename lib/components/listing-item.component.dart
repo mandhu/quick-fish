@@ -15,12 +15,15 @@ class ListItemCard extends StatelessWidget {
       margin: EdgeInsets.only(top: 10, left: 15, right: 15),
       child: Row(
         children: <Widget>[
-          SizedBox(
+          Container(
             width: 80,
             height: 80,
-            child: Placeholder(
-              color: Colors.blueAccent,
-            ),
+            child: ClipRRect(
+                borderRadius: new BorderRadius.circular(10.0),
+                child: Image.network(
+                  'http://placekitten.com/150/150',
+                  fit: BoxFit.cover,
+                )),
           ),
           SizedBox(width: 20),
           Column(

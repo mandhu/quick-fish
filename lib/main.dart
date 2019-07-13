@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quick_fish/pages/listings.page.dart';
+import 'package:quick_fish/pages/new-post.page.dart';
 
 import 'pages/details.page.dart';
 
@@ -34,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
       TextStyle(color: Colors.redAccent, fontSize: 12);
   int selectedPage = 0;
 
-  List pages = [ListingsPage(), ProductDetailsPage()];
+  List pages = [NewPostPage(), ListingsPage(), ProductDetailsPage() ];
 
   @override
   void initState() {
@@ -98,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
             MaterialButton(
               onPressed: () {
                 setState(() {
-//                  selectedPage = 2;
+                  selectedPage = 2;
                 });
               },
               child: Column(
