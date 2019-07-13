@@ -47,7 +47,9 @@ class _NewPostPageState extends State<NewPostPage>
           'file', await image.readAsBytes(),
           contentType: new MediaType('image', 'jpeg')));
       var response = await request.send();
-      if (response.statusCode == 200) print("Uploaded! ${response.stream.toString()}");
+      if (response.statusCode == 200) {
+        print("Uploaded! ${response.stream.toString()}");
+      };
 
       print(
           "Uploaded! ${response.statusCode.toString()} ------>  ${response.toString()}");
@@ -66,180 +68,66 @@ class _NewPostPageState extends State<NewPostPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: NavigationBar(1),
-      body: ListView(children: <Widget>[
-        Material(
-          color: Colors.blueAccent,
-          child: Container(
-            height: 250,
-            child: _image == null
-                ? InkWell(
-                    onTap: () {
-                      getImage();
-                    },
-                    child: Center(
-                        child: Icon(
-                      Icons.add,
-                      size: 80,
-                      color: Colors.white24,
-                    )),
-                  )
-                : Image.file(
-                    _image,
-                    fit: BoxFit.cover,
-                  ),
-          ),
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 20.0),
-          child: Text(
-            'Post new listing',
-            style: TextStyle(fontSize: 20),
-          ),
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.only(right: 20),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(4)),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color(0xFFEEEEEE),
-                          blurRadius: 2.0,
-                        )
-                      ],
-                    ),
-                    child: TextFormField(
-                      controller: _productController,
-                      style: TextStyle(fontSize: 18),
-                      decoration: InputDecoration(
-                        hintText: 'Product',
-                        hintStyle: TextStyle(color: Colors.black26),
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.all(10),
-                        focusedBorder: InputBorder.none,
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            )),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-          child: Row(
-            children: <Widget>[
-              Expanded(
-                child: Container(
-                  margin: EdgeInsets.only(right: 20),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0xFFCDDFF2),
-                        blurRadius: 5.0,
-                      )
-                    ],
-                  ),
-                  child: TextFormField(
-                    controller: _priceController,
-                    style: TextStyle(fontSize: 18),
-                    decoration: InputDecoration(
-                      hintText: 'Price',
-                      hintStyle: TextStyle(color: Colors.black26),
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.all(10),
-                      focusedBorder: InputBorder.none,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-          child: Row(
-            children: <Widget>[
-              Expanded(
-                child: Container(
-                  margin: EdgeInsets.only(right: 20),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0xFFCDDFF2),
-                        blurRadius: 5.0,
-                      )
-                    ],
-                  ),
-                  child: TextFormField(
-                    controller: _quantityController,
-                    style: TextStyle(fontSize: 18),
-                    decoration: InputDecoration(
-                      hintText: 'Quantity',
-                      hintStyle: TextStyle(color: Colors.black26),
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.all(10),
-                      focusedBorder: InputBorder.none,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-            child: Row(
-              children: <Widget>[
-                Checkbox(
-                  value: isChecked,
-                  onChanged: (value) {
-                    setState(() {
-                      isChecked = value;
-                    });
+        bottomNavigationBar: NavigationBar(1),
+        body: ListView(
+          padding: EdgeInsets.all(0),
+          children: <Widget>[
+            Material(
+              color: Colors.redAccent,
+              child: Container(
+                height: 250,
+                child: _image == null
+                    ? InkWell(
+                  onTap: () {
+                    getImage();
                   },
+                  child: Center(
+                      child: Icon(
+                        Icons.add,
+                        size: 80,
+                        color: Colors.white24,
+                      )),
+                )
+                    : Image.file(
+                  _image,
+                  fit: BoxFit.cover,
                 ),
-                Text('Do you deliver?')
-              ],
-            )),
-        if (isChecked)
-          Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child: Text(
+                'Post new listing',
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Row(
                 children: <Widget>[
                   Expanded(
                     child: Container(
                       margin: EdgeInsets.only(right: 20),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        borderRadius: BorderRadius.all(Radius.circular(4)),
                         color: Colors.white,
                         boxShadow: [
                           BoxShadow(
-                            color: Color(0xFFCDDFF2),
-                            blurRadius: 5.0,
+                            color: Color(0xFFEEEEEE),
+                            blurRadius: 2.0,
                           )
                         ],
                       ),
                       child: TextFormField(
-                        controller: _deliveryDistanceController,
                         style: TextStyle(fontSize: 18),
                         decoration: InputDecoration(
-                          hintText: 'Max Delivery distance',
+                          hintText: 'Product',
                           hintStyle: TextStyle(color: Colors.black26),
                           border: InputBorder.none,
                           contentPadding: EdgeInsets.all(10),
@@ -247,27 +135,136 @@ class _NewPostPageState extends State<NewPostPage>
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ],
-              )),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(12),
-              child: MaterialButton(
-                color: Colors.redAccent,
-                textColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4)),
-                child: Text('Post'),
-                onPressed: () {},
               ),
             ),
+            Padding(
+              padding:
+              const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.only(right: 20),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(4)),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0xFFEEEEEE),
+                            blurRadius: 2.0,
+                          )
+                        ],
+                      ),
+                      child: TextFormField(
+                        style: TextStyle(fontSize: 18),
+                        decoration: InputDecoration(
+                          hintText: 'Price',
+                          hintStyle: TextStyle(color: Colors.black26),
+                          border: InputBorder.none,
+                          contentPadding: EdgeInsets.all(10),
+                          focusedBorder: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.only(right: 20),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(4)),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0xFFEEEEEE),
+                            blurRadius: 2.0,
+                          )
+                        ],
+                      ),
+                      child: TextFormField(
+                        style: TextStyle(fontSize: 18),
+                        decoration: InputDecoration(
+                          hintText: 'Quantity',
+                          hintStyle: TextStyle(color: Colors.black26),
+                          border: InputBorder.none,
+                          contentPadding: EdgeInsets.all(10),
+                          focusedBorder: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+                padding:
+                const EdgeInsets.symmetric(horizontal: 6.0, vertical: 10),
+                child: Row(
+                  children: <Widget>[
+                    Checkbox(
+                      value: isChecked,
+                      onChanged: (value) {
+                        setState(() {
+                          isChecked = value;
+                        });
+                      },
+                    ),
+                    Text('Do you deliver?')
+                  ],
+                )),
+            if (isChecked)
+              Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0, vertical: 10),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: Container(
+                          margin: EdgeInsets.only(right: 20),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(4)),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0xFFEEEEEE),
+                                blurRadius: 2.0,
+                              )
+                            ],
+                          ),
+                          child: TextFormField(
+                            style: TextStyle(fontSize: 18),
+                            decoration: InputDecoration(
+                              hintText: 'Max Delivery distance',
+                              hintStyle: TextStyle(color: Colors.black26),
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.all(10),
+                              focusedBorder: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  )),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(right: 40.0),
+                  child: MaterialButton(
+                    color: Colors.redAccent,
+                    textColor: Colors.white,
+                    padding: const EdgeInsets.all(12),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4)),
+                    child: Text('Post'),
+                    onPressed: () {},
+                  ),
+                ),
+              ],
+            )
           ],
-        )
-      ]),
-    );
+        ));
   }
 
   Future<Null> _refresh() {
