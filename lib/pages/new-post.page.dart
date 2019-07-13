@@ -30,11 +30,17 @@ class _NewPostPageState extends State<NewPostPage>
   }
 
   Future getImage() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    try {
+      var image = await ImagePicker.pickImage(source: ImageSource.camera);
 
-    setState(() {
-      _image = image;
-    });
+      setState(() {
+        _image = image;
+      });
+    } catch (e){
+      setState(() {
+        _image = null;
+      });
+    }
   }
 
   @override

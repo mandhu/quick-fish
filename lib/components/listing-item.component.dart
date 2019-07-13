@@ -14,6 +14,7 @@ class ListItemCard extends StatelessWidget {
     return FishCard(
       margin: EdgeInsets.only(top: 10, left: 15, right: 15),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
             width: 80,
@@ -26,13 +27,19 @@ class ListItemCard extends StatelessWidget {
                 )),
           ),
           SizedBox(width: 20),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Text(name, style: TextStyle(fontSize: 20)),
-              Text(seller, style: TextStyle(color: Colors.indigoAccent[700])),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Text(name, style: TextStyle(fontSize: 20)),
+                Text(seller, style: TextStyle(color: Colors.indigoAccent[700])),
+              ],
+            ),
+          ),
+          Text(
+            '\$ 240.00',
+            style: TextStyle(fontSize: 18, color: Colors.lightGreen),
           )
         ],
       ),

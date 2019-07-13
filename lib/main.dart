@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Icon(Icons.home,
                       color: selectedPage == 0
                           ? Colors.redAccent
-                          : Colors.white54),
+                          : Colors.black45),
                   Text('Home',
                       style: selectedPage == 0 ? activeLabelStyle : labelStyle)
                 ],
@@ -96,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Icon(Icons.list,
                       color: selectedPage == 1
                           ? Colors.redAccent
-                          : Colors.white54),
+                          : Colors.black45),
                   Text('Listing',
                       style: selectedPage == 1 ? activeLabelStyle : labelStyle)
                 ],
@@ -114,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Icon(Icons.account_circle,
                       color: selectedPage == 2
                           ? Colors.redAccent
-                          : Colors.white54),
+                          : Colors.black45),
                   Text('Profile',
                       style: selectedPage == 2 ? activeLabelStyle : labelStyle)
                 ],
@@ -129,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('MVR 100.00', style: TextStyle(fontSize: 20)),
+                  Text('\$ 100.00', style: TextStyle(fontSize: 20)),
                   Text(
                     'Your balance',
                     style: labelStyle,
