@@ -8,14 +8,16 @@ class FishCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: new BoxDecoration(
-          color: Colors.green,
-          borderRadius: new BorderRadius.only(
-              topLeft: const Radius.circular(20.0),
-              topRight: const Radius.circular(20.0))),
-      padding: EdgeInsets.all(padding),
-      child: child,
+    return SizedBox(
+      child: Container(
+        decoration: new BoxDecoration(
+            color: Colors.white,
+            borderRadius: new BorderRadius.only(
+                topLeft: const Radius.circular(20.0),
+                topRight: const Radius.circular(20.0))),
+        padding: EdgeInsets.all(padding),
+        child: child,
+      ),
     );
   }
 }

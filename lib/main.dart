@@ -43,13 +43,15 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Expanded(
-              child: Container(
-                  width: double.infinity, child: pages[selectedPage])),
-        ],
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Expanded(
+                child: Container(
+                    width: double.infinity, child: pages[selectedPage])),
+          ],
+        ),
       ),
       bottomNavigationBar: Container(
         height: 57,
