@@ -51,6 +51,140 @@ class _ProfilePageState extends State<ProfilePage>
               ),
             )
           ]),
+        ),
+        Expanded(
+          child: ListView(
+            children: <Widget>[
+              InkWell(
+                onTap: () {},
+                child: Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                      border:
+                          Border(bottom: BorderSide(color: Colors.black12))),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 30, right: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'Profile',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black54,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        Icon(Icons.navigate_next)
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {},
+                child: Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                      border:
+                          Border(bottom: BorderSide(color: Colors.black12))),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 30, right: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'Orders',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black54,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(right: 10),
+                              child: Text(
+                                '5 Orders',
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.black38,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                            Icon(Icons.navigate_next),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {},
+                child: Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                      border:
+                          Border(bottom: BorderSide(color: Colors.black12))),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 30, right: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'Listings',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black54,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(right: 10),
+                              child: Text(
+                                '2 Listings',
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.black38,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                            Icon(Icons.navigate_next),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {},
+                child: Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                      border:
+                          Border(bottom: BorderSide(color: Colors.black12))),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 30, right: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'Address',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black54,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        Icon(Icons.navigate_next)
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         )
       ],
     );
