@@ -9,6 +9,7 @@ class ProductDetailsPage extends StatefulWidget {
 class _ProductDetailsPageState extends State<ProductDetailsPage>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
+  bool isChecked = false;
 
   @override
   void initState() {
@@ -58,34 +59,83 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(right: 15),
+          padding: const EdgeInsets.only(right: 25, top: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               Text(
                 '\$ 100',
-                style: TextStyle(fontSize: 20, color: Color(0xff5FB405)),
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xff5FB405)),
               ),
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(15),
+          padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
           child: Row(
             children: <Widget>[
               Expanded(
                 flex: 2,
-                child: TextField(
-                  decoration: InputDecoration(hintText: 'Quantity'),
+                child: Container(
+                  margin: EdgeInsets.only(right: 20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xFFCDDFF2),
+                        blurRadius: 5.0,
+                      )
+                    ],
+                  ),
+                  child: TextFormField(
+                    style: TextStyle(fontSize: 18),
+                    decoration: InputDecoration(
+                      hintText: 'Quantity',
+                      hintStyle: TextStyle(color: Colors.black26),
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.all(10),
+                      focusedBorder: InputBorder.none,
+                    ),
+                  ),
                 ),
               ),
               MaterialButton(
-                child: Text('asdfd'),
+                color: Color(0xff3B85D2),
+                textColor: Colors.white,
+                padding: const EdgeInsets.all(12),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                child: Text('BUY NOW'),
                 onPressed: () {},
               )
             ],
           ),
         ),
+        Row(
+          children: <Widget>[
+            Checkbox(
+              value: isChecked,
+              onChanged: (value) {
+                setState(() {
+                  isChecked = value;
+                });
+              },
+            ),
+            Text('Delivery?')
+          ],
+        ),
+        
+        TextField(
+          decoration: InputDecoration(
+            labelText: 'Address'
+          ),
+          maxLines: null,
+          keyboardType: TextInputType.multiline,
+        )
       ],
     );
   }
