@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -5,6 +6,8 @@ import 'package:http_parser/http_parser.dart';
 import 'package:image_picker_modern/image_picker_modern.dart';
 import 'package:http/http.dart' as http;
 import 'package:quick_fish/components/navigation-bar.component.dart';
+
+import 'listings.page.dart';
 
 class NewPostPage extends StatefulWidget {
   @override
@@ -40,7 +43,7 @@ class _NewPostPageState extends State<NewPostPage>
       var image = await ImagePicker.pickImage(source: ImageSource.camera);
 
       // Upload here
-      var postUri = Uri.parse("http://10.10.21.154:8000/api/upload");
+      var postUri = Uri.parse("http://10.10.21.185:8000/api/upload");
       var request = new http.MultipartRequest("POST", postUri);
       request.fields['user'] = 'blah';
       request.files.add(new http.MultipartFile.fromBytes(
@@ -48,8 +51,13 @@ class _NewPostPageState extends State<NewPostPage>
           contentType: new MediaType('image', 'jpeg')));
       var response = await request.send();
       if (response.statusCode == 200) {
+        response.stream.transform(utf8.decoder).listen((value) {
+          var res = json.decode(value);
+          _imageController.text = res['data']['url'];
+          print(value);
+        });
         print("Uploaded! ${response.stream.toString()}");
-      };
+      }
 
       print(
           "Uploaded! ${response.statusCode.toString()} ------>  ${response.toString()}");
@@ -58,7 +66,33 @@ class _NewPostPageState extends State<NewPostPage>
         _image = image;
       });
     } catch (e) {
-      print('-----------------------------Failed');
+      print('-----------------------------Failed::: $e');
+      setState(() {
+        _image = null;
+      });
+    }
+  }
+
+  Future postListing() async {
+    try {
+      // Upload here
+      Map data = {
+        "product_id": 1.toString(),
+        "price": _priceController.text.toString(),
+        "quantity": _quantityController.text.toString(),
+        "promoted": false.toString()
+      };
+      var response = await  http.post("http://10.10.21.185:8000/api/listings", body: data);
+      if (response.statusCode == 200) {
+        print('Saved');
+          Navigator.push(context, MaterialPageRoute(builder: (_) {
+            return ListingsPage();
+          }));
+      } else {
+        print('failed to save:: CODE: ${response.statusCode}, ${response.body.toString()}');
+      }
+    } catch (e) {
+      print('-----------------------------Failed:: $e');
       setState(() {
         _image = null;
       });
@@ -125,6 +159,7 @@ class _NewPostPageState extends State<NewPostPage>
                         ],
                       ),
                       child: TextFormField(
+                        controller: _productController,
                         style: TextStyle(fontSize: 18),
                         decoration: InputDecoration(
                           hintText: 'Product',
@@ -158,6 +193,7 @@ class _NewPostPageState extends State<NewPostPage>
                         ],
                       ),
                       child: TextFormField(
+                        controller: _priceController,
                         style: TextStyle(fontSize: 18),
                         decoration: InputDecoration(
                           hintText: 'Price',
@@ -183,6 +219,7 @@ class _NewPostPageState extends State<NewPostPage>
                         ],
                       ),
                       child: TextFormField(
+                        controller: _quantityController,
                         style: TextStyle(fontSize: 18),
                         decoration: InputDecoration(
                           hintText: 'Quantity',
@@ -233,6 +270,7 @@ class _NewPostPageState extends State<NewPostPage>
                             ],
                           ),
                           child: TextFormField(
+                            controller: _deliveryDistanceController,
                             style: TextStyle(fontSize: 18),
                             decoration: InputDecoration(
                               hintText: 'Max Delivery distance',
@@ -258,7 +296,9 @@ class _NewPostPageState extends State<NewPostPage>
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(4)),
                     child: Text('Post'),
-                    onPressed: () {},
+                    onPressed: () {
+                      postListing();
+                    },
                   ),
                 ),
               ],

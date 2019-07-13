@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             fontFamily: 'Product Sans',
             primarySwatch: Colors.blue,
+            pageTransitionsTheme: PageTransitionsTheme(builders: {TargetPlatform.android: CupertinoPageTransitionsBuilder(),}),
             backgroundColor: Color(0x00F2F8FF)),
         debugShowCheckedModeBanner: false,
         home: MyHomePage());
@@ -32,9 +33,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int selectedPage = 0;
-
-  List pages = [NewPostPage(), ListingsPage(), ProfilePage()];
 
   @override
   void initState() {
@@ -43,15 +41,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Expanded(
-                child: Container(
-                    width: double.infinity, child: pages[selectedPage])),
-          ],
-        ),
-        bottomNavigationBar: NavigationBar(0));
+    return ListingsPage();
   }
 }
