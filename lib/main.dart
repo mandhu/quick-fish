@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
       TextStyle(color: Colors.redAccent, fontSize: 12);
   int selectedPage = 0;
 
-  List pages = [NewPostPage(), ListingsPage(), ProductDetailsPage() ];
+  List pages = [NewPostPage(), ListingsPage(), ProductDetailsPage()];
 
   @override
   void initState() {
@@ -75,7 +75,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Icon(Icons.home),
+                  Icon(Icons.home,
+                      color: selectedPage == 0
+                          ? Colors.redAccent
+                          : Colors.white54),
                   Text('Home',
                       style: selectedPage == 0 ? activeLabelStyle : labelStyle)
                 ],
@@ -90,7 +93,10 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Icon(Icons.list),
+                  Icon(Icons.list,
+                      color: selectedPage == 1
+                          ? Colors.redAccent
+                          : Colors.white54),
                   Text('Listing',
                       style: selectedPage == 1 ? activeLabelStyle : labelStyle)
                 ],
@@ -105,7 +111,10 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Icon(Icons.account_circle),
+                  Icon(Icons.account_circle,
+                      color: selectedPage == 2
+                          ? Colors.redAccent
+                          : Colors.white54),
                   Text('Profile',
                       style: selectedPage == 2 ? activeLabelStyle : labelStyle)
                 ],
