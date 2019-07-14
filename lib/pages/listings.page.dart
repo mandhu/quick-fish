@@ -2,11 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:quick_fish/components/boosted-item.component.dart';
-import 'package:quick_fish/components/fish-card.component.dart';
 import 'package:quick_fish/components/listing-item.component.dart';
 import 'package:quick_fish/components/navigation-bar.component.dart';
 import 'package:http/http.dart' as http;
-//import 'package:firebase_messaging/firebase_messaging.dart';
 
 import '../listing.dart';
 
@@ -98,10 +96,10 @@ class _ListingsPageState extends State<ListingsPage>
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-              child: Text('Promoted'),
+              child: Text('Promoted', style: TextStyle(fontSize: 20),),
             ),
             Container(
-              height: 120,
+              height: 140,
               child: Container(
                 width: double.infinity,
                 child: PageView(
@@ -117,7 +115,7 @@ class _ListingsPageState extends State<ListingsPage>
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: Text('Latest'),
+              child: Text('Latest', style: TextStyle(fontSize: 20)),
             ),
             Expanded(
                 child: RefreshIndicator(
@@ -148,7 +146,7 @@ class _ListingsPageState extends State<ListingsPage>
   }
 
   Future<Null> _refresh() {
-    return loadItems();
-    ;
+    loadItems();
+    return new Future.delayed(Duration(seconds: 1), null);
   }
 }

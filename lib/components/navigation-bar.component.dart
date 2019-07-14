@@ -90,7 +90,7 @@ class NavigationBar extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text('\$ 100.00', style: TextStyle(fontSize: 20)),
+                Text('\$ 300.00', style: TextStyle(fontSize: 20)),
                 Text(
                   'Your balance',
                   style: labelStyle,
