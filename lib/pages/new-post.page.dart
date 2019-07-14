@@ -43,7 +43,7 @@ class _NewPostPageState extends State<NewPostPage>
       var image = await ImagePicker.pickImage(source: ImageSource.camera);
 
       // Upload here
-      var postUri = Uri.parse("http://10.10.21.185:8000/api/upload");
+      var postUri = Uri.parse("https://freshub.blazing.mv/api/upload");
       var request = new http.MultipartRequest("POST", postUri);
       request.files.add(new http.MultipartFile.fromBytes(
           'file', await image.readAsBytes(),
@@ -83,7 +83,7 @@ class _NewPostPageState extends State<NewPostPage>
         "promoted": false.toString()
       };
       print(data);
-      var response = await  http.post("http://10.10.21.185:8000/api/listings", body: data);
+      var response = await  http.post("https://freshub.blazing.mv/api/listings", body: data);
       if (response.statusCode == 200) {
         print('Saved');
           Navigator.push(context, MaterialPageRoute(builder: (_) {

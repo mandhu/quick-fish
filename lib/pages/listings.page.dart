@@ -24,12 +24,8 @@ class _ListingsPageState extends State<ListingsPage>
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
       new GlobalKey<RefreshIndicatorState>();
 
-<<<<<<< HEAD
-  List<Post> posts;
 //  final FirebaseMessaging _fcm = FirebaseMessaging();
-=======
   List<Listing> listings = [];
->>>>>>> 02a9c040e2a8b27ab4e158e1c63efbd7d66ef997
 
   @override
   void initState() {
