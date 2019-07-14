@@ -5,6 +5,7 @@ import 'package:timeago/timeago.dart' as timeago;
 
 class PaymentBox extends StatefulWidget {
   final dynamic id;
+//  final int
 
   PaymentBox({this.id});
 
@@ -32,7 +33,7 @@ class _PaymentBoxState extends State<PaymentBox> {
           height: 12,
         ),
         MaterialButton(
-          color: Color(0xff3B85D2),
+          color: Colors.redAccent,
           textColor: Colors.white,
           padding: const EdgeInsets.all(12),
           shape:
@@ -57,7 +58,7 @@ class _PaymentBoxState extends State<PaymentBox> {
           height: 12,
         ),
         MaterialButton(
-          color: Color(0xff3B85D2),
+          color: Colors.redAccent,
           textColor: Colors.white,
           padding: const EdgeInsets.all(12),
           shape:

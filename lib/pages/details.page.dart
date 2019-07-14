@@ -125,7 +125,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
+                                  BorderRadius.all(Radius.circular(5)),
                               color: Colors.white,
                               boxShadow: [
                                 BoxShadow(
@@ -165,7 +165,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
                   if (isChecked)
                     Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
                           color: Colors.white,
                           boxShadow: [
                             BoxShadow(
@@ -184,17 +184,30 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
                           keyboardType: TextInputType.multiline,
                         )),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.only(top: 20),
                         child: MaterialButton(
-                          color: Color(0xff3B85D2),
-                          textColor: Colors.white,
+                          textColor: Colors.redAccent,
                           padding: const EdgeInsets.all(12),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20)),
-                          child: Text('BUY NOW'),
+                          child: Text('Subscribe', style: TextStyle(fontWeight: FontWeight.bold)),
+                          onPressed: () {
+//                            _settingModalBottomSheet(context);
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20),
+                        child: MaterialButton(
+                          color: Colors.redAccent,
+                          textColor: Colors.white,
+                          padding: const EdgeInsets.all(12),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Text('BUY NOW', style: TextStyle(fontWeight: FontWeight.bold),),
                           onPressed: () {
                             _settingModalBottomSheet(context);
                           },
