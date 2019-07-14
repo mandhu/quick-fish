@@ -4,6 +4,7 @@ import 'package:quick_fish/components/fish-card.component.dart';
 import 'package:quick_fish/components/listing-item.component.dart';
 import 'package:quick_fish/components/navigation-bar.component.dart';
 import 'package:http/http.dart' as http;
+//import 'package:firebase_messaging/firebase_messaging.dart';
 
 class ListingsPage extends StatefulWidget {
   @override
@@ -20,11 +21,41 @@ class _ListingsPageState extends State<ListingsPage>
       new GlobalKey<RefreshIndicatorState>();
 
   List<Post> posts;
+//  final FirebaseMessaging _fcm = FirebaseMessaging();
 
   @override
   void initState() {
     _controller = AnimationController(vsync: this);
     super.initState();
+//    _saveDeviceToken();
+//    _fcm.configure(
+//      onMessage: (Map<String, dynamic> message) async {
+//        print("onMessage: $message");
+//        showDialog(
+//          context: context,
+//          builder: (context) => AlertDialog(
+//            content: ListTile(
+//              title: Text(message['notification']['title']),
+//              subtitle: Text(message['notification']['body']),
+//            ),
+//            actions: <Widget>[
+//              FlatButton(
+//                child: Text('Ok'),
+//                onPressed: () => Navigator.of(context).pop(),
+//              ),
+//            ],
+//          ),
+//        );
+//      },
+//      onLaunch: (Map<String, dynamic> message) async {
+//        print("onLaunch: $message");
+//        // TODO optional
+//      },
+//      onResume: (Map<String, dynamic> message) async {
+//        print("onResume: $message");
+//        // TODO optional
+//      },
+//    );
   }
 
   @override
@@ -37,6 +68,16 @@ class _ListingsPageState extends State<ListingsPage>
     var res = await http.get('http://10.10.21.185:8000/api/listings');
 
   }
+
+//  _saveDeviceToken() async {
+//    // Get the token for this device
+//    String fcmToken = await _fcm.getToken();
+//
+//    // Save it
+//    if (fcmToken != null) {
+//     print(fcmToken);
+//    }
+//  }
 
   @override
   Widget build(BuildContext context) {
