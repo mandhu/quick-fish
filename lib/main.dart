@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quick_fish/pages/listings.page.dart';
-import 'package:quick_fish/pages/new-post.page.dart';
-import 'package:quick_fish/pages/orders.page.dart';
-import 'package:quick_fish/pages/profile.page.dart';
 import 'package:onesignal/onesignal.dart';
 import 'package:http/http.dart' as http;
-
-import 'components/navigation-bar.component.dart';
-import 'pages/details.page.dart';
 
 void main() => runApp(MyApp());
 
@@ -63,10 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void checkPermission() async {
     var status = await OneSignal.shared.getPermissionSubscriptionState();
-    print("==================status");
-    print(status.subscriptionStatus.userId);
     try {
-      // Upload here
       Map data = {
         "user_id": 2.toString(),
         "push_token": status.subscriptionStatus.userId.toString(),
@@ -75,7 +66,6 @@ class _MyHomePageState extends State<MyHomePage> {
       var response = await http.post("https://freshub.blazing.mv/api/push_token", body: data);
       if (response.statusCode == 200) {
         print('Saved');
-
       } else {
         print('failed to save:: CODE: ${response.statusCode}, ${response.body.toString()}');
       }

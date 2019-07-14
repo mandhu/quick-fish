@@ -6,7 +6,6 @@ import 'package:timeago/timeago.dart' as timeago;
 
 class PaymentBox extends StatefulWidget {
   final dynamic id;
-//  final int
 
   PaymentBox({this.id});
 

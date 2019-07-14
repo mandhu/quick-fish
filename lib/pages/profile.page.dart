@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quick_fish/components/fish-card.component.dart';
 import 'package:quick_fish/components/navigation-bar.component.dart';
 import 'package:quick_fish/pages/orders.page.dart';
+import 'package:quick_fish/pages/wallet.page.dart';
 
 import 'listings.page.dart';
 
@@ -207,7 +208,11 @@ class _ProfilePageState extends State<ProfilePage>
                     ),
                   ),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) {
+                        return WalletPage();
+                      }));
+                    },
                     child: Container(
                       height: 50,
                       decoration: BoxDecoration(
