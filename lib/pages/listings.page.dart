@@ -21,10 +21,11 @@ class _ListingsPageState extends State<ListingsPage>
   PageController _pageController =
       PageController(viewportFraction: 0.75, initialPage: 0, keepPage: true);
 
+  TextEditingController _searchController = TextEditingController();
+
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
       new GlobalKey<RefreshIndicatorState>();
 
-//  final FirebaseMessaging _fcm = FirebaseMessaging();
   List<Listing> listings = [];
 
   @override
@@ -32,6 +33,9 @@ class _ListingsPageState extends State<ListingsPage>
     _controller = AnimationController(vsync: this);
     super.initState();
     loadItems();
+    _searchController.addListener(() {
+      loadItems(search: _searchController.text);
+    });
   }
 
   @override
@@ -40,8 +44,10 @@ class _ListingsPageState extends State<ListingsPage>
     super.dispose();
   }
 
-  Future<List<Listing>> loadItems() async {
-    final response = await http.get('https://freshub.blazing.mv/api/listings');
+  Future<List<Listing>> loadItems({search}) async {
+    String _search = search == null ? '' : '?search=$search';
+    final response =
+        await http.get('https://freshub.blazing.mv/api/listings$_search');
     if (response.statusCode == 200) {
       final List<Listing> loaditems = [];
       for (var item in json.decode(response.body)['data']) {
@@ -66,12 +72,28 @@ class _ListingsPageState extends State<ListingsPage>
             SizedBox(
               height: 20,
             ),
-            FishCard(
-              child: Text(
-                'Search...',
-                style: TextStyle(fontSize: 20),
-              ),
+            Container(
               margin: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(4)),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0xFFEEEEEE),
+                    blurRadius: 2.0,
+                  )
+                ],
+              ),
+              child: TextFormField(
+                controller: _searchController,
+                style: TextStyle(fontSize: 18),
+                decoration: InputDecoration(
+                  hintText: 'Search...',
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.all(10),
+                  focusedBorder: InputBorder.none,
+                ),
+              ),
             ),
             Padding(
               padding:
@@ -101,7 +123,9 @@ class _ListingsPageState extends State<ListingsPage>
                 child: RefreshIndicator(
                     displacement: 0,
                     key: _refreshIndicatorKey,
-                    onRefresh: _refresh,
+                    onRefresh: () {
+                      _refresh();
+                    },
                     child: listings.isNotEmpty
                         ? ListView(padding: EdgeInsets.all(0), children: [
                             for (var item in listings)
@@ -115,13 +139,16 @@ class _ListingsPageState extends State<ListingsPage>
                                 image: item.image,
                               )
                           ])
-                        : Text('test')))
+                        : Center(
+                            child: Text('Loading...'),
+                          )))
           ],
         ),
         bottomNavigationBar: NavigationBar(0));
   }
 
   Future<Null> _refresh() {
-    return null;
+    return loadItems();
+    ;
   }
 }

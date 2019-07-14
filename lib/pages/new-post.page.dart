@@ -20,7 +20,7 @@ class _NewPostPageState extends State<NewPostPage>
   bool isChecked = false;
   File _image;
 
-  TextEditingController _productController = TextEditingController(text: '2');
+  TextEditingController _productController = TextEditingController(text: '1');
   TextEditingController _priceController = TextEditingController();
   TextEditingController _quantityController = TextEditingController();
   TextEditingController _deliveryDistanceController = TextEditingController();
@@ -76,7 +76,7 @@ class _NewPostPageState extends State<NewPostPage>
     try {
       // Upload here
       Map data = {
-        "product_id": 1.toString(),
+        "product_id": _productController.text.toString(),
         "price": _priceController.text.toString(),
         "quantity": _quantityController.text.toString(),
         "image": _imageController.text.toString(),
@@ -165,9 +165,11 @@ class _NewPostPageState extends State<NewPostPage>
                       child: DropdownButton<String>(
                         onChanged: (value) {
                           print(value);
-                          _productController.text = value.toString();
+                          setState(() {
+                            _productController.text = value.toString();
+                          });
                         },
-                        value: '1',
+                        value: _productController.text,
                         items: <List>[
                           [1, 'Red Snapper'],
                           [2, 'Tomato'],
@@ -352,7 +354,4 @@ class _NewPostPageState extends State<NewPostPage>
         ));
   }
 
-  Future<Null> _refresh() {
-    return null;
-  }
 }

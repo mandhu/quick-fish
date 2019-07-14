@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quick_fish/pages/listings.page.dart';
 
 import 'fish-card.component.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -40,7 +41,9 @@ class _PaymentBoxState extends State<PaymentBox> {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           child: Text('Done'),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(context, MaterialPageRoute(builder: (_) {
+              return ListingsPage();
+            }));
           },
         ),
       ],
