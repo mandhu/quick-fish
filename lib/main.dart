@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
         "push_token": status.subscriptionStatus.userId.toString(),
       };
       print(data);
-      var response = await http.post("https://freshub.blazing.mv/api/listings", body: data);
+      var response = await http.post("https://freshub.blazing.mv/api/push_token", body: data);
       if (response.statusCode == 200) {
         print('Saved');
 
