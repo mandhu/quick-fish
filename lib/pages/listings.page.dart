@@ -31,35 +31,6 @@ class _ListingsPageState extends State<ListingsPage>
   void initState() {
     _controller = AnimationController(vsync: this);
     super.initState();
-//    _saveDeviceToken();
-//    _fcm.configure(
-//      onMessage: (Map<String, dynamic> message) async {
-//        print("onMessage: $message");
-//        showDialog(
-//          context: context,
-//          builder: (context) => AlertDialog(
-//            content: ListTile(
-//              title: Text(message['notification']['title']),
-//              subtitle: Text(message['notification']['body']),
-//            ),
-//            actions: <Widget>[
-//              FlatButton(
-//                child: Text('Ok'),
-//                onPressed: () => Navigator.of(context).pop(),
-//              ),
-//            ],
-//          ),
-//        );
-//      },
-//      onLaunch: (Map<String, dynamic> message) async {
-//        print("onLaunch: $message");
-//        // TODO optional
-//      },
-//      onResume: (Map<String, dynamic> message) async {
-//        print("onResume: $message");
-//        // TODO optional
-//      },
-//    );
     loadItems();
   }
 
@@ -68,11 +39,6 @@ class _ListingsPageState extends State<ListingsPage>
     _controller.dispose();
     super.dispose();
   }
-
-  // loadItems() async {
-  //   var res = await http.get('http://10.10.21.185:8000/api/listings');
-
-  // }
 
   Future<List<Listing>> loadItems() async {
     final response = await http.get('https://freshub.blazing.mv/api/listings');
@@ -89,16 +55,6 @@ class _ListingsPageState extends State<ListingsPage>
       throw Exception('Failed to load post');
     }
   }
-
-//  _saveDeviceToken() async {
-//    // Get the token for this device
-//    String fcmToken = await _fcm.getToken();
-//
-//    // Save it
-//    if (fcmToken != null) {
-//     print(fcmToken);
-//    }
-//  }
 
   @override
   Widget build(BuildContext context) {

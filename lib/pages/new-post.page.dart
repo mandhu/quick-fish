@@ -20,7 +20,7 @@ class _NewPostPageState extends State<NewPostPage>
   bool isChecked = false;
   File _image;
 
-  TextEditingController _productController = TextEditingController();
+  TextEditingController _productController = TextEditingController(text: '2');
   TextEditingController _priceController = TextEditingController();
   TextEditingController _quantityController = TextEditingController();
   TextEditingController _deliveryDistanceController = TextEditingController();
@@ -83,14 +83,16 @@ class _NewPostPageState extends State<NewPostPage>
         "promoted": false.toString()
       };
       print(data);
-      var response = await  http.post("https://freshub.blazing.mv/api/push_token", body: data);
+      var response = await http.post("https://freshub.blazing.mv/api/listings",
+          body: data);
       if (response.statusCode == 200) {
         print('Saved');
-          Navigator.push(context, MaterialPageRoute(builder: (_) {
-            return ListingsPage();
-          }));
+        Navigator.push(context, MaterialPageRoute(builder: (_) {
+          return ListingsPage();
+        }));
       } else {
-        print('failed to save:: CODE: ${response.statusCode}, ${response.body.toString()}');
+        print(
+            'failed to save:: CODE: ${response.statusCode}, ${response.body.toString()}');
       }
     } catch (e) {
       print('-----------------------------Failed:: $e');
@@ -113,20 +115,20 @@ class _NewPostPageState extends State<NewPostPage>
                 height: 250,
                 child: _image == null
                     ? InkWell(
-                  onTap: () {
-                    getImage();
-                  },
-                  child: Center(
-                      child: Icon(
-                        Icons.add,
-                        size: 80,
-                        color: Colors.white24,
-                      )),
-                )
+                        onTap: () {
+                          getImage();
+                        },
+                        child: Center(
+                            child: Icon(
+                          Icons.add,
+                          size: 80,
+                          color: Colors.white24,
+                        )),
+                      )
                     : Image.file(
-                  _image,
-                  fit: BoxFit.cover,
-                ),
+                        _image,
+                        fit: BoxFit.cover,
+                      ),
               ),
             ),
             SizedBox(
@@ -162,7 +164,8 @@ class _NewPostPageState extends State<NewPostPage>
                       ),
                       child: DropdownButton<String>(
                         onChanged: (value) {
-                          _productController.text = value;
+                          print(value);
+                          _productController.text = value.toString();
                         },
                         value: '1',
                         items: <List>[
@@ -218,7 +221,7 @@ class _NewPostPageState extends State<NewPostPage>
 //            ),
             Padding(
               padding:
-              const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
               child: Row(
                 children: <Widget>[
                   Expanded(
@@ -278,7 +281,7 @@ class _NewPostPageState extends State<NewPostPage>
             ),
             Padding(
                 padding:
-                const EdgeInsets.symmetric(horizontal: 6.0, vertical: 10),
+                    const EdgeInsets.symmetric(horizontal: 6.0, vertical: 10),
                 child: Row(
                   children: <Widget>[
                     Checkbox(
