@@ -9,14 +9,15 @@ class ListItemCard extends StatelessWidget {
   final String name;
   final String seller;
   final String price;
+  final String image;
   final String tag;
   final String createdAt;
 
-  ListItemCard({this.id, this.name, this.seller, this.price, this.tag, this.createdAt});
+  ListItemCard({this.id, this.name, this.seller, this.price, this.tag, this.createdAt, this.image});
 
   @override
   Widget build(BuildContext context) {
-    print(createdAt);
+    // print(image);
     final fifteenAgo = DateTime.parse(createdAt);
 
     return Container(
@@ -25,6 +26,7 @@ class ListItemCard extends StatelessWidget {
         child: InkWell(
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (_) {
+              print(id);
               return ProductDetailsPage(tag, id);
             }));
           },
@@ -43,7 +45,7 @@ class ListItemCard extends StatelessWidget {
                         child: Hero(
                           tag: tag,
                           child: Image.network(
-                            'http://placekitten.com/150/150',
+                            'https://freshub.blazing.mv/storage$image',
                             fit: BoxFit.cover,
                           ),
                         )),

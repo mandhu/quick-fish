@@ -75,7 +75,7 @@ class _ListingsPageState extends State<ListingsPage>
   // }
 
   Future<List<Listing>> loadItems() async {
-    final response = await http.get('http://10.10.21.185:8000/api/listings');
+    final response = await http.get('https://freshub.blazing.mv/api/listings');
     if (response.statusCode == 200) {
       final List<Listing> loaditems = [];
       for (var item in json.decode(response.body)['data']) {
@@ -150,11 +150,13 @@ class _ListingsPageState extends State<ListingsPage>
                         ? ListView(padding: EdgeInsets.all(0), children: [
                             for (var item in listings)
                               ListItemCard(
+                                id: item.id,
                                 name: item.product,
                                 seller: item.seller,
                                 tag: '${item.id.toString()}${item.product}',
                                 price: item.price,
                                 createdAt: item.createdAt,
+                                image: item.image,
                               )
                           ])
                         : Text('test')))

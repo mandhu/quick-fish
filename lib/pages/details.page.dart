@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:quick_fish/components/fish-card.component.dart';
 import 'package:quick_fish/components/navigation-bar.component.dart';
 import 'package:http/http.dart' as http;
+import 'package:quick_fish/components/payment.component.dart';
+import 'package:timeago/timeago.dart' as timeago;
 import '../listing.dart';
 
 class ProductDetailsPage extends StatefulWidget {
@@ -20,6 +22,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
   bool isChecked = false;
+  var listing;
   int selectedPage = 1;
   final TextStyle labelStyle = TextStyle(color: Colors.black45, fontSize: 12);
   final TextStyle activeLabelStyle =
@@ -28,12 +31,15 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
   @override
   void initState() {
     _controller = AnimationController(vsync: this);
+    loaditem();
     super.initState();
   }
 
    Future<List<Listing>> loaditem() async {
-    final response = await http.get('http://10.10.21.185:8000/api/listings/$this.id');
+     print(widget.heroTag);
+    final response = await http.get('https://freshub.blazing.mv/api/listings/${widget.id}');
     if (response.statusCode == 200) {
+      listing = (json.decode(response.body)['data']);
       // final List<Listing> loaditems = [];
       // for (var item in json.decode(response.body)['data']) {
       //   loaditems.add(Listing.fromJson(item));
@@ -57,7 +63,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
+        body: 
+        listing != null ?
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Hero(
@@ -65,7 +73,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
               child: Container(
                 height: 230,
                 child: Image.network(
-                  'http://placekitten.com/1024/550',
+                  'https://freshub.blazing.mv/storage${listing["image"]}',
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
@@ -80,18 +88,17 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
-                        'Red Snapper',
+                        listing['product']['name'],
                         style: TextStyle(fontSize: 20),
                       ),
-                      Text(
-                        '5 mins ago',
+                      Text(timeago.format(DateTime.parse(listing['created_at'])),
                         style:
                             TextStyle(fontSize: 12, color: Color(0xff4B88DA)),
                       ),
                     ],
                   ),
                   Text(
-                    'Fisherman X',
+                    listing['seller']['name'],
                     style: TextStyle(fontSize: 12, color: Color(0xff4B88DA)),
                   ),
                   Padding(
@@ -100,7 +107,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          '\$ 100',
+                          '\$${listing["price"]}',
                           style: TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.w600,
@@ -118,7 +125,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
+                                  BorderRadius.all(Radius.circular(5)),
                               color: Colors.white,
                               boxShadow: [
                                 BoxShadow(
@@ -158,7 +165,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
                   if (isChecked)
                     Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
                           color: Colors.white,
                           boxShadow: [
                             BoxShadow(
@@ -177,18 +184,33 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
                           keyboardType: TextInputType.multiline,
                         )),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.only(top: 20),
                         child: MaterialButton(
-                          color: Color(0xff3B85D2),
-                          textColor: Colors.white,
+                          textColor: Colors.redAccent,
                           padding: const EdgeInsets.all(12),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20)),
-                          child: Text('BUY NOW'),
-                          onPressed: () {},
+                          child: Text('Subscribe', style: TextStyle(fontWeight: FontWeight.bold)),
+                          onPressed: () {
+//                            _settingModalBottomSheet(context);
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20),
+                        child: MaterialButton(
+                          color: Colors.redAccent,
+                          textColor: Colors.white,
+                          padding: const EdgeInsets.all(12),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Text('BUY NOW', style: TextStyle(fontWeight: FontWeight.bold),),
+                          onPressed: () {
+                            _settingModalBottomSheet(context);
+                          },
                         ),
                       ),
                     ],
@@ -197,7 +219,29 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
               ),
             ),
           ],
-        ),
+        ): Center(child: Text('Loading..')),
         bottomNavigationBar: NavigationBar(0));
+  }
+
+  void _settingModalBottomSheet(context){
+    showModalBottomSheet(
+        context: context,
+        builder: (builder){
+          return new Container(
+            height: 350.0,
+            color: Colors.transparent, //could change this to Color(0xFF737373),
+            //so you don't have to change MaterialApp canvasColor
+            child: new Container(
+                decoration: new BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: new BorderRadius.only(
+                        topLeft: const Radius.circular(10.0),
+                        topRight: const Radius.circular(10.0))),
+                child: new Center(
+                  child: PaymentBox(),
+                )),
+          );
+        }
+    );
   }
 }
