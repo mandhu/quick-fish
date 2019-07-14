@@ -53,6 +53,12 @@ class _MyHomePageState extends State<MyHomePage> {
       print(changes.jsonRepresentation());
     });
     OneSignal.shared.setInFocusDisplayType(OSNotificationDisplayType.notification);
+    OneSignal.shared.setNotificationReceivedHandler((OSNotification notification) {
+      // will be called whenever a notification is received
+      Navigator.push(context, MaterialPageRoute(builder: (_) {
+        return ListingsPage();
+      }));    
+    });
   }
 
   void checkPermission() async {
