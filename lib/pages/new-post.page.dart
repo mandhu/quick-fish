@@ -165,7 +165,13 @@ class _NewPostPageState extends State<NewPostPage>
                           _productController.text = value;
                         },
                         value: '1',
-                        items: <List>[[1, 'Faru mas'], [2, 'Tomato']].map((List value) {
+                        items: <List>[
+                          [1, 'Red Snapper'],
+                          [2, 'Tomato'],
+                          [3, 'Cabbage'],
+                          [4, 'Octopus'],
+                          [5, 'Grouper'],
+                        ].map((List value) {
                           return new DropdownMenuItem<String>(
                             value: value[0].toString(),
                             child: new Text(value[1]),
