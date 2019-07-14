@@ -25,6 +25,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   provider: 3.0.0+1
   image_picker_modern: ^0.4.12+2
+  onesignal: ^1.1.0
 
 
 dev_dependencies:

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quick_fish/pages/listings.page.dart';
 import 'package:quick_fish/pages/new-post.page.dart';
 import 'package:quick_fish/pages/profile.page.dart';
+import 'package:onesignal/onesignal.dart';
 
 import 'pages/details.page.dart';
 
