@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "588864307766",
+    "firebase_url": "https://fresh-hub-93741.firebaseio.com",
+    "project_id": "fresh-hub-93741",
+    "storage_bucket": "fresh-hub-93741.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588864307766:android:7cd64427b648570b",
+        "android_client_info": {
+          "package_name": "io.ashamnx.quick_fish"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "588864307766-vmms0sc8kp9idupjb4nvijkt6tha6vfs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANT3wQSGt9ysvhTDmhlbWe2yYh1q2Z054"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "588864307766-vmms0sc8kp9idupjb4nvijkt6tha6vfs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
