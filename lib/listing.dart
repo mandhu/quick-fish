@@ -6,6 +6,7 @@ class Listing {
   final category;
   final seller;
   final price;
+  final createdAt;
 
   Listing(
       {this.id,
@@ -14,7 +15,8 @@ class Listing {
         this.product,
         this.price,
         this.category,
-        this.seller,});
+        this.seller,
+        this.createdAt});
 
   factory Listing.fromJson(Map<String, dynamic> json) {
     return Listing(
@@ -25,6 +27,7 @@ class Listing {
         product: json['product']['name'],
         seller: json['seller']['name'],
         price: json['price'],
+        createdAt: json['created_at']
         );
   }
 }

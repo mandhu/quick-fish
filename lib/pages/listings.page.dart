@@ -42,11 +42,10 @@ class _ListingsPageState extends State<ListingsPage>
   //   var res = await http.get('http://10.10.21.185:8000/api/listings');
 
   // }
-  
+
   Future<List<Listing>> loadItems() async {
     final response = await http.get('http://10.10.21.185:8000/api/listings');
     if (response.statusCode == 200) {
-//    print(json.decode(response.body));
       final List<Listing> loaditems = [];
       for (var item in json.decode(response.body)['data']) {
         loaditems.add(Listing.fromJson(item));
@@ -55,11 +54,7 @@ class _ListingsPageState extends State<ListingsPage>
         listings = loaditems;
       });
       return loaditems;
-      // If the call to the server was successful, parse the JSON
-//    return Post.fromJson(json.decode(response.body));
-      // print("Status OK");
     } else {
-      // If that call was not successful, throw an error.
       throw Exception('Failed to load post');
     }
   }
@@ -110,17 +105,18 @@ class _ListingsPageState extends State<ListingsPage>
                     displacement: 0,
                     key: _refreshIndicatorKey,
                     onRefresh: _refresh,
-                    child: 
-                    listings.isNotEmpty ? 
-                    ListView(padding: EdgeInsets.all(0), children: [
-                      for (var item in listings)
-                      ListItemCard(
-                        name: item.product,
-                        seller: item.seller,
-                        tag: '${item.id.toString()}${item.product}',
-                        price: item.price
-                      )
-                    ]): Text('test')))
+                    child: listings.isNotEmpty
+                        ? ListView(padding: EdgeInsets.all(0), children: [
+                            for (var item in listings)
+                              ListItemCard(
+                                name: item.product,
+                                seller: item.seller,
+                                tag: '${item.id.toString()}${item.product}',
+                                price: item.price,
+                                createdAt: item.createdAt,
+                              )
+                          ])
+                        : Text('test')))
           ],
         ),
         bottomNavigationBar: NavigationBar(0));
