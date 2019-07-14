@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:quick_fish/components/fish-card.component.dart';
 import 'package:quick_fish/components/navigation-bar.component.dart';
 import 'package:http/http.dart' as http;
+import 'package:quick_fish/components/payment.component.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import '../listing.dart';
 
@@ -194,7 +195,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20)),
                           child: Text('BUY NOW'),
-                          onPressed: () {},
+                          onPressed: () {
+                            _settingModalBottomSheet(context);
+                          },
                         ),
                       ),
                     ],
@@ -203,7 +206,29 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
               ),
             ),
           ],
-        ): Text('Loading..'),
+        ): Center(child: Text('Loading..')),
         bottomNavigationBar: NavigationBar(0));
+  }
+
+  void _settingModalBottomSheet(context){
+    showModalBottomSheet(
+        context: context,
+        builder: (builder){
+          return new Container(
+            height: 350.0,
+            color: Colors.transparent, //could change this to Color(0xFF737373),
+            //so you don't have to change MaterialApp canvasColor
+            child: new Container(
+                decoration: new BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: new BorderRadius.only(
+                        topLeft: const Radius.circular(10.0),
+                        topRight: const Radius.circular(10.0))),
+                child: new Center(
+                  child: PaymentBox(),
+                )),
+          );
+        }
+    );
   }
 }
