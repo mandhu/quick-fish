@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
     try {
       // Upload here
       Map data = {
-        "user_id": 2,
+        "user_id": 2.toString(),
         "push_token": status.subscriptionStatus.userId.toString(),
       };
       print(data);
@@ -81,7 +81,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Text('asas');
     return ListingsPage();
   }
 }
