@@ -278,6 +278,6 @@ class _ProfilePageState extends State<ProfilePage>
             )
           ],
         ),
-        bottomNavigationBar: NavigationBar(2));
+        bottomNavigationBar: NavigationBar(3));
   }
 }

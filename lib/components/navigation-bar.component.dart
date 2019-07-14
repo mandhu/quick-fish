@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quick_fish/pages/listings.page.dart';
 import 'package:quick_fish/pages/new-post.page.dart';
 import 'package:quick_fish/pages/profile.page.dart';
+import 'package:quick_fish/pages/subscriptions.page.dart';
 
 class NavigationBar extends StatelessWidget {
   final int selectedPage;
@@ -65,24 +66,26 @@ class NavigationBar extends StatelessWidget {
           MaterialButton(
             onPressed: selectedPage != 2 ? () {
               Navigator.push(context, MaterialPageRoute(builder: (_) {
-                return ProfilePage();
+                return SubscriptionsPage();
               }));
             } : null,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Icon(Icons.account_circle,
+                Icon(Icons.notifications,
                     color: selectedPage == 2
                         ? Colors.redAccent
                         : Colors.black45),
-                Text('Profile',
+                Text('Notifications',
                     style: selectedPage == 2 ? activeLabelStyle : labelStyle)
               ],
             ),
           ),
           MaterialButton(
             onPressed: () {
-
+              Navigator.push(context, MaterialPageRoute(builder: (_) {
+                return ProfilePage();
+              }));
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
