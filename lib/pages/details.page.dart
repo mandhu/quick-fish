@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:quick_fish/components/fish-card.component.dart';
 import 'package:quick_fish/components/navigation-bar.component.dart';
 import 'package:http/http.dart' as http;
+import 'package:timeago/timeago.dart' as timeago;
 import '../listing.dart';
 
 class ProductDetailsPage extends StatefulWidget {
@@ -20,6 +21,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
   bool isChecked = false;
+  var listing;
   int selectedPage = 1;
   final TextStyle labelStyle = TextStyle(color: Colors.black45, fontSize: 12);
   final TextStyle activeLabelStyle =
@@ -28,12 +30,15 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
   @override
   void initState() {
     _controller = AnimationController(vsync: this);
+    loaditem();
     super.initState();
   }
 
    Future<List<Listing>> loaditem() async {
-    final response = await http.get('http://10.10.21.185:8000/api/listings/$this.id');
+     print(widget.heroTag);
+    final response = await http.get('https://freshub.blazing.mv/api/listings/${widget.id}');
     if (response.statusCode == 200) {
+      listing = (json.decode(response.body)['data']);
       // final List<Listing> loaditems = [];
       // for (var item in json.decode(response.body)['data']) {
       //   loaditems.add(Listing.fromJson(item));
@@ -57,7 +62,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
+        body: 
+        listing != null ?
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Hero(
@@ -65,7 +72,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
               child: Container(
                 height: 230,
                 child: Image.network(
-                  'http://placekitten.com/1024/550',
+                  'https://freshub.blazing.mv/storage${listing["image"]}',
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
@@ -80,18 +87,17 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
-                        'Red Snapper',
+                        listing['product']['name'],
                         style: TextStyle(fontSize: 20),
                       ),
-                      Text(
-                        '5 mins ago',
+                      Text(timeago.format(DateTime.parse(listing['created_at'])),
                         style:
                             TextStyle(fontSize: 12, color: Color(0xff4B88DA)),
                       ),
                     ],
                   ),
                   Text(
-                    'Fisherman X',
+                    listing['seller']['name'],
                     style: TextStyle(fontSize: 12, color: Color(0xff4B88DA)),
                   ),
                   Padding(
@@ -100,7 +106,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          '\$ 100',
+                          '\$${listing["price"]}',
                           style: TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.w600,
@@ -197,7 +203,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
               ),
             ),
           ],
-        ),
+        ): Text('Loading..'),
         bottomNavigationBar: NavigationBar(0));
   }
 }
