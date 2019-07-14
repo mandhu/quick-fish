@@ -1,11 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:quick_fish/components/fish-card.component.dart';
 import 'package:quick_fish/components/navigation-bar.component.dart';
+import 'package:http/http.dart' as http;
+import '../listing.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   final String heroTag;
+  final int id;
 
-  ProductDetailsPage(this.heroTag);
+  ProductDetailsPage(this.heroTag, this.id);
 
   @override
   _ProductDetailsPageState createState() => _ProductDetailsPageState();
@@ -24,6 +29,23 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
   void initState() {
     _controller = AnimationController(vsync: this);
     super.initState();
+  }
+
+   Future<List<Listing>> loaditem() async {
+    final response = await http.get('http://10.10.21.185:8000/api/listings/$this.id');
+    if (response.statusCode == 200) {
+      // final List<Listing> loaditems = [];
+      // for (var item in json.decode(response.body)['data']) {
+      //   loaditems.add(Listing.fromJson(item));
+      // }
+      setState(() {
+        // listings = loaditems;
+      });
+      return null;
+      // return loaditems;
+    } else {
+      throw Exception('Failed to load post');
+    }
   }
 
   @override

@@ -5,16 +5,19 @@ import 'package:timeago/timeago.dart' as timeago;
 import 'fish-card.component.dart';
 
 class ListItemCard extends StatelessWidget {
+  final int id;
   final String name;
   final String seller;
   final String price;
   final String tag;
+  final String createdAt;
 
-  ListItemCard({this.name, this.seller, this.price, this.tag});
+  ListItemCard({this.id, this.name, this.seller, this.price, this.tag, this.createdAt});
 
   @override
   Widget build(BuildContext context) {
-    final fifteenAgo = new DateTime.now().subtract(new Duration(minutes: 15));
+    print(createdAt);
+    final fifteenAgo = DateTime.parse(createdAt);
 
     return Container(
       child: Material(
@@ -22,7 +25,7 @@ class ListItemCard extends StatelessWidget {
         child: InkWell(
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (_) {
-              return ProductDetailsPage(tag);
+              return ProductDetailsPage(tag, id);
             }));
           },
           child: Container(
@@ -59,7 +62,7 @@ class ListItemCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '\$240.00',
+                    '\$$price',
                     style: TextStyle(fontSize: 18, letterSpacing: -1.5, color: Colors.black45),
                   )
                 ],

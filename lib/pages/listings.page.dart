@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:quick_fish/components/boosted-item.component.dart';
 import 'package:quick_fish/components/fish-card.component.dart';
@@ -5,6 +7,8 @@ import 'package:quick_fish/components/listing-item.component.dart';
 import 'package:quick_fish/components/navigation-bar.component.dart';
 import 'package:http/http.dart' as http;
 //import 'package:firebase_messaging/firebase_messaging.dart';
+
+import '../listing.dart';
 
 class ListingsPage extends StatefulWidget {
   @override
@@ -20,8 +24,12 @@ class _ListingsPageState extends State<ListingsPage>
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
       new GlobalKey<RefreshIndicatorState>();
 
+<<<<<<< HEAD
   List<Post> posts;
 //  final FirebaseMessaging _fcm = FirebaseMessaging();
+=======
+  List<Listing> listings = [];
+>>>>>>> 02a9c040e2a8b27ab4e158e1c63efbd7d66ef997
 
   @override
   void initState() {
@@ -56,6 +64,7 @@ class _ListingsPageState extends State<ListingsPage>
 //        // TODO optional
 //      },
 //    );
+    loadItems();
   }
 
   @override
@@ -64,9 +73,25 @@ class _ListingsPageState extends State<ListingsPage>
     super.dispose();
   }
 
-  loadItems() async {
-    var res = await http.get('http://10.10.21.185:8000/api/listings');
+  // loadItems() async {
+  //   var res = await http.get('http://10.10.21.185:8000/api/listings');
 
+  // }
+
+  Future<List<Listing>> loadItems() async {
+    final response = await http.get('http://10.10.21.185:8000/api/listings');
+    if (response.statusCode == 200) {
+      final List<Listing> loaditems = [];
+      for (var item in json.decode(response.body)['data']) {
+        loaditems.add(Listing.fromJson(item));
+      }
+      setState(() {
+        listings = loaditems;
+      });
+      return loaditems;
+    } else {
+      throw Exception('Failed to load post');
+    }
   }
 
 //  _saveDeviceToken() async {
@@ -125,53 +150,18 @@ class _ListingsPageState extends State<ListingsPage>
                     displacement: 0,
                     key: _refreshIndicatorKey,
                     onRefresh: _refresh,
-                    child: ListView(padding: EdgeInsets.all(0), children: [
-                      ListItemCard(
-                        name: 'Rae mas',
-                        seller: 'Hilman',
-                        tag: 'hero',
-                      ),
-                      ListItemCard(
-                        name: 'Bodu boava',
-                        seller: 'Hilman',
-                        tag: 'jalsddf-ka',
-                      ),
-                      ListItemCard(
-                        name: 'Faru tholhi',
-                        seller: 'Hilman',
-                        tag: 'jaldfsd80ka',
-                      ),
-                      ListItemCard(
-                        name: 'Rae mas',
-                        seller: 'Hilman',
-                        tag: 'jalsdk6ad8f',
-                      ),
-                      ListItemCard(
-                        name: 'Bodu boava',
-                        seller: 'Hilman',
-                        tag: 'jaldfs2dka',
-                      ),
-                      ListItemCard(
-                        name: 'Faru tholhi',
-                        seller: 'Hilman',
-                        tag: 'jaldf52sdka',
-                      ),
-                      ListItemCard(
-                        name: 'Rae mas',
-                        seller: 'Hilman',
-                        tag: 'jaldfsdk4a',
-                      ),
-                      ListItemCard(
-                        name: 'Bodu boava',
-                        seller: 'Hilman',
-                        tag: 'jadflsssdfdka',
-                      ),
-                      ListItemCard(
-                        name: 'Faru tholhi',
-                        seller: 'Hilman',
-                        tag: 'jaldfsdfgfgfgka',
-                      )
-                    ])))
+                    child: listings.isNotEmpty
+                        ? ListView(padding: EdgeInsets.all(0), children: [
+                            for (var item in listings)
+                              ListItemCard(
+                                name: item.product,
+                                seller: item.seller,
+                                tag: '${item.id.toString()}${item.product}',
+                                price: item.price,
+                                createdAt: item.createdAt,
+                              )
+                          ])
+                        : Text('test')))
           ],
         ),
         bottomNavigationBar: NavigationBar(0));
@@ -181,47 +171,3 @@ class _ListingsPageState extends State<ListingsPage>
     return null;
   }
 }
-
-
-class Post {
-  final tripNo;
-  final bookable;
-  final cancelled;
-  final capacity;
-  final price;
-  final from;
-  final to;
-  final departure;
-  final transit;
-  final boat;
-  final ticketCounts;
-
-  Post(
-      {this.tripNo,
-        this.bookable,
-        this.cancelled,
-        this.capacity,
-        this.price,
-        this.from,
-        this.to,
-        this.departure,
-        this.transit,
-        this.boat,
-        this.ticketCounts});
-
-  factory Post.fromJson(Map<String, dynamic> json) {
-    return Post(
-        tripNo: json['tripNo'],
-        bookable: json['bookable'],
-        cancelled: json['cancelled'],
-        capacity: json['capacity'],
-        price: json['price'],
-        from: json['from'],
-        to: json['to'],
-        departure: json['departure'],
-        transit: json['transit'],
-        boat: json['boat'],
-        ticketCounts: json['ticketCounts']);
-  }
-}
-
