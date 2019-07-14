@@ -17,7 +17,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             fontFamily: 'Product Sans',
             primarySwatch: Colors.blue,
-            pageTransitionsTheme: PageTransitionsTheme(builders: {TargetPlatform.android: CupertinoPageTransitionsBuilder(),}),
+            pageTransitionsTheme: PageTransitionsTheme(builders: {
+              TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+            }),
             backgroundColor: Color(0x00F2F8FF)),
         debugShowCheckedModeBanner: false,
         home: MyHomePage());
@@ -33,7 +35,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   void initState() {
     super.initState();
