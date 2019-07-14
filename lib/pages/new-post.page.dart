@@ -43,9 +43,8 @@ class _NewPostPageState extends State<NewPostPage>
       var image = await ImagePicker.pickImage(source: ImageSource.camera);
 
       // Upload here
-      var postUri = Uri.parse("http://10.10.21.185:8000/api/upload");
+      var postUri = Uri.parse("https://freshub.blazing.mv/api/upload");
       var request = new http.MultipartRequest("POST", postUri);
-      request.fields['user'] = 'blah';
       request.files.add(new http.MultipartFile.fromBytes(
           'file', await image.readAsBytes(),
           contentType: new MediaType('image', 'jpeg')));
@@ -80,9 +79,11 @@ class _NewPostPageState extends State<NewPostPage>
         "product_id": 1.toString(),
         "price": _priceController.text.toString(),
         "quantity": _quantityController.text.toString(),
+        "image": _imageController.text.toString(),
         "promoted": false.toString()
       };
-      var response = await  http.post("http://10.10.21.185:8000/api/listings", body: data);
+      print(data);
+      var response = await  http.post("https://freshub.blazing.mv/api/listings", body: data);
       if (response.statusCode == 200) {
         print('Saved');
           Navigator.push(context, MaterialPageRoute(builder: (_) {
@@ -148,6 +149,7 @@ class _NewPostPageState extends State<NewPostPage>
                   Expanded(
                     child: Container(
                       margin: EdgeInsets.only(right: 20),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(4)),
                         color: Colors.white,
@@ -158,22 +160,56 @@ class _NewPostPageState extends State<NewPostPage>
                           )
                         ],
                       ),
-                      child: TextFormField(
-                        controller: _productController,
-                        style: TextStyle(fontSize: 18),
-                        decoration: InputDecoration(
-                          hintText: 'Product',
-                          hintStyle: TextStyle(color: Colors.black26),
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.all(10),
-                          focusedBorder: InputBorder.none,
-                        ),
+                      child: DropdownButton<String>(
+                        onChanged: (value) {
+                          _productController.text = value;
+                        },
+                        value: '1',
+                        items: <List>[[1, 'Faru mas'], [2, 'Tomato']].map((List value) {
+                          return new DropdownMenuItem<String>(
+                            value: value[0].toString(),
+                            child: new Text(value[1]),
+                          );
+                        }).toList(),
                       ),
                     ),
                   ),
                 ],
               ),
             ),
+//            Padding(
+//              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+//              child: Row(
+//                children: <Widget>[
+//                  Expanded(
+//                    child: Container(
+//                      margin: EdgeInsets.only(right: 20),
+//                      decoration: BoxDecoration(
+//                        borderRadius: BorderRadius.all(Radius.circular(4)),
+//                        color: Colors.white,
+//                        boxShadow: [
+//                          BoxShadow(
+//                            color: Color(0xFFEEEEEE),
+//                            blurRadius: 2.0,
+//                          )
+//                        ],
+//                      ),
+//                      child: TextFormField(
+//                        controller: _productController,
+//                        style: TextStyle(fontSize: 18),
+//                        decoration: InputDecoration(
+//                          hintText: 'Product',
+//                          hintStyle: TextStyle(color: Colors.black26),
+//                          border: InputBorder.none,
+//                          contentPadding: EdgeInsets.all(10),
+//                          focusedBorder: InputBorder.none,
+//                        ),
+//                      ),
+//                    ),
+//                  ),
+//                ],
+//              ),
+//            ),
             Padding(
               padding:
               const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
